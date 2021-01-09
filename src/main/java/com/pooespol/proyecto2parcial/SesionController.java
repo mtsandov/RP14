@@ -5,6 +5,7 @@
  */
 package com.pooespol.proyecto2parcial;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -24,8 +25,6 @@ public class SesionController implements Initializable {
     @FXML
     private TextField txtCorreo;
     @FXML
-    private TextField txtContrasena;
-    @FXML
     private Button btnIngresar;
     @FXML
     private Label txtMostrar;
@@ -40,6 +39,13 @@ public class SesionController implements Initializable {
 
     @FXML
     private void irInterfaz(MouseEvent event) {
+        try{
+            App.setRoot("interfazAdministrador");
+        }catch(IOException ex){
+            System.out.println("Sucedio algo");
+            System.err.println(ex);
+        }
+        
         
     }
     
