@@ -29,6 +29,7 @@ public class Plato {
     public Plato(String nombre, double precio, String imagen) {
         this.nombre = nombre;
         this.precio = precio;
+        this.imagen = imagen;
     }
 
     public void setNombre(String nombre) {
@@ -43,6 +44,8 @@ public class Plato {
     public String toString() {
         return nombre;
     }
+
+
     
     
     

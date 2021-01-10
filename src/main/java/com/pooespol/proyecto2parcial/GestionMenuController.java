@@ -7,6 +7,7 @@ package com.pooespol.proyecto2parcial;
 
 import com.pooespol.proyecto2parcial.data.PlatoData;
 import com.pooespol.proyecto2parcial.modelo.Plato;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -43,7 +44,6 @@ public class GestionMenuController implements Initializable {
                 InputStream inputImg = App.class.getResource(p.getImagen()).openStream();
                 ImageView imgv = new ImageView(new Image(inputImg));
                 vbox.getChildren().add(imgv);
-                
                 vbox.getChildren().add(new Label(p.getNombre()));
                 vbox.getChildren().add(new Label(String.valueOf(p.getPrecio())));
                 vbox.setPadding(new Insets(2,3,3,4));

@@ -33,8 +33,10 @@ public class PlatoData {
                 String linea;
                 while( (linea=bf.readLine())!=null ){
                     String[] partes = linea.split(";");
-                    p.add(new Plato(partes[0], Double.parseDouble(partes[1]), partes[2]));
-                    
+                    Plato plato = new Plato(partes[0], Double.parseDouble(partes[1]), partes[2]);
+                    if (plato != null){
+                        p.add(plato);
+                    }
                 }    
             }catch(FileNotFoundException ex) {
                 System.out.println(ex.getMessage());
