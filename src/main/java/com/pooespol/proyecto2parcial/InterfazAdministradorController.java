@@ -5,6 +5,7 @@
  */
 package com.pooespol.proyecto2parcial;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -36,6 +37,13 @@ public class InterfazAdministradorController implements Initializable {
 
     @FXML
     private void irGestionMenu(MouseEvent event) {
+        try{
+            App.setRoot("gestionMenu");
+        }catch(IOException ex){
+            System.out.println("Ocurrio algo");
+            System.out.println(ex);
+        }
+        
     }
 
     @FXML

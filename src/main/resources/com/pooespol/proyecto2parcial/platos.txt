@@ -1,0 +1,4 @@
+encebollado;2.00;encebollado.jpeg
+empanada;0.50;empanada.jpeg
+bolon;1.25;bolon.jpeg
+salchipapa;0.50;salchipapa.jpeg
