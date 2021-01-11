@@ -37,12 +37,15 @@ public class MenuPedidoController implements Initializable {
     private VBox panelInformacion;
     @FXML
     private HBox panelPrincipal;
+    @FXML
+    private Label tituloMenu;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
+            
             List<Plato> platos = PlatoData.leerPlatos();
             for(Plato p: platos){
                 VBox vbox = new VBox();

@@ -13,35 +13,28 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
-
 /**
  * FXML Controller class
  *
  * @author UserPC
  */
-public class SesionController implements Initializable {
+public class PruebaLoginController implements Initializable {
     
     App app = new App();
+
 
     @FXML
     private TextField txtCorreo;
     @FXML
-    private Button btnIngresar;
+    private PasswordField txtContrasena;
     @FXML
     private Label txtMostrar;
-    @FXML
-    private PasswordField txtContrasena;
-
     /**
      * Initializes the controller class.
      */
@@ -49,7 +42,7 @@ public class SesionController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
+    
     @FXML
     private void irInterfaz(MouseEvent event) {
         ArrayList<Usuario> usuarios = app.getUsuarios();
@@ -81,5 +74,5 @@ public class SesionController implements Initializable {
             txtMostrar.setText("Datos incorrectos");
         }
     }
-    
+
 }

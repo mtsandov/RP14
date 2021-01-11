@@ -9,7 +9,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.proyecto2parcial.MenuPedidoController">
    <children>
-      <Label alignment="CENTER" prefHeight="50.0" prefWidth="700.0" text="Label">
+      <Label fx:id="tituloMenu" alignment="CENTER" prefHeight="50.0" prefWidth="700.0" text="Label">
          <font>
             <Font size="31.0" />
          </font>
