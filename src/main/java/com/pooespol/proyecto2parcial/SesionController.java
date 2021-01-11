@@ -6,6 +6,7 @@
 package com.pooespol.proyecto2parcial;
 
 import com.pooespol.proyecto2parcial.usuarios.Administrador;
+import com.pooespol.proyecto2parcial.usuarios.Mesero;
 import com.pooespol.proyecto2parcial.usuarios.Usuario;
 import java.io.IOException;
 import java.net.URL;
@@ -64,6 +65,15 @@ public class SesionController implements Initializable {
                             System.out.println("Sucedio algo");
                             System.err.println(ex);
                         }                     
+                    }else if(u instanceof Mesero){
+                        try{
+                            b = true;
+                            App.setRoot("interfazMesero");
+                            break;
+                        }catch(IOException ex){
+                            System.out.println("Sucedio algo");
+                            System.err.println(ex);
+                        }   
                     }
                 }
         }

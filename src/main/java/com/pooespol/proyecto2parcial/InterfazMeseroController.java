@@ -10,14 +10,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
 import javafx.scene.input.MouseEvent;
+
 /**
  * FXML Controller class
  *
- * @author UserPC
+ * @author Personal
  */
-public class InterfazAdministradorController implements Initializable {
+public class InterfazMeseroController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -26,29 +26,16 @@ public class InterfazAdministradorController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
-    @FXML
-    private void irMonitoreoR(MouseEvent event) {
-    }
 
     @FXML
-    private void irDisenoPlano(MouseEvent event) {
-    }
-
-    @FXML
-    private void irGestionMenu(MouseEvent event) {
-        try{
-            
-            App.setRoot("gestionMenu");
-        }catch(IOException ex){
-            System.out.println("Ocurrio algo");
-            System.out.println(ex);
+    private void irPedido(MouseEvent event) {
+        try {
+            App.setRoot("menuPedido");
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
-        
     }
-
-    @FXML
-    private void verReporteVentas(MouseEvent event) {
-    }
-
+    
+    
+    
 }

@@ -7,12 +7,12 @@ package com.pooespol.proyecto2parcial;
 
 import com.pooespol.proyecto2parcial.data.PlatoData;
 import com.pooespol.proyecto2parcial.modelo.Plato;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -20,19 +20,23 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 /**
  * FXML Controller class
  *
- * @author UserPC
+ * @author Personal
  */
-public class GestionMenuController implements Initializable {
+public class MenuPedidoController implements Initializable {
 
 
     @FXML
-    private FlowPane panelGestionMenu;
+    private VBox panelInformacion;
+    @FXML
+    private HBox panelPrincipal;
     /**
      * Initializes the controller class.
      */
@@ -48,20 +52,18 @@ public class GestionMenuController implements Initializable {
                 vbox.getChildren().add(new Label(p.getNombre()));
                 vbox.getChildren().add(new Label("$ " + String.valueOf(p.getPrecio())));
                 vbox.setPadding(new Insets(2,3,3,4));              
-                panelGestionMenu.getChildren().add(vbox);
+                panelPrincipal.getChildren().add(vbox);
             }
             
         } catch (IOException ex) {
             System.out.println("Paso algo");
         }
-
-        
     }    
 
     @FXML
     private void regresar(MouseEvent event) {
         try {
-            App.setRoot("interfazAdministrador");
+            App.setRoot("interfazMesero");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
