@@ -24,7 +24,7 @@ import javafx.scene.input.MouseEvent;
  *
  * @author UserPC
  */
-public class PruebaLoginController implements Initializable {
+public class LoginController implements Initializable {
     
     App app = new App();
 
