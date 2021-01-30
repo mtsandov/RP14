@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.proyecto2parcial.LoginController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.proyecto2parcial.LoginController">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="97.0" prefWidth="700.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="388.0" prefWidth="600.0">
          <children>
             <Label text="Iniciar Sesion">
                <font>
@@ -23,7 +23,7 @@
             <Insets left="100.0" right="100.0" />
          </VBox.margin>
       </HBox>
-      <VBox prefHeight="150.0" prefWidth="700.0" spacing="5.0">
+      <VBox prefHeight="209.0" prefWidth="800.0" spacing="5.0">
          <children>
             <Label text="Correo">
                <font>
@@ -47,17 +47,17 @@
             <Insets left="100.0" right="100.0" />
          </padding>
       </VBox>
-      <HBox prefHeight="39.0" prefWidth="700.0">
+      <HBox prefHeight="178.0" prefWidth="800.0">
          <children>
-            <Button mnemonicParsing="false" onMouseClicked="#irInterfaz" prefHeight="26.0" prefWidth="500.0" text="Ingresar" />
+            <Button mnemonicParsing="false" onMouseClicked="#irInterfaz" prefHeight="28.0" prefWidth="500.0" text="Ingresar" />
          </children>
          <padding>
             <Insets left="100.0" right="100.0" />
          </padding>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" spacing="220.0">
+      <HBox prefHeight="264.0" prefWidth="800.0" spacing="220.0">
          <children>
-            <Label fx:id="txtMostrar" text="Copyright © Alfredo-Victor-Angel">
+            <Label fx:id="txtMostrar" alignment="BOTTOM_LEFT" text="Copyright © Alfredo-Victor-Angel">
                <font>
                   <Font size="14.0" />
                </font>
