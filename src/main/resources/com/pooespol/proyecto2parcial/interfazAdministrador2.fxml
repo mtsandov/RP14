@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.proyecto2parcial.MonitoreoRestaurante2Controller">
+   <center>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+            <Tab text="Monitoreo">
+               <content>
+                  <VBox prefHeight="570.0" prefWidth="676.0">
+                     <children>
+                        <Pane prefHeight="523.0" prefWidth="700.0">
+                           <children>
+                              <StackPane layoutX="30.0" layoutY="14.0" prefHeight="62.0" prefWidth="70.0">
+                                 <children>
+                                    <Ellipse fill="DODGERBLUE" radiusX="52.0" radiusY="42.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Label text="1" />
+                                 </children>
+                              </StackPane>
+                              <StackPane layoutX="156.0" layoutY="14.0" prefHeight="106.0" prefWidth="126.0">
+                                 <children>
+                                    <Ellipse fill="DODGERBLUE" radiusX="65.0" radiusY="39.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Label text="2" />
+                                 </children>
+                              </StackPane>
+                              <StackPane layoutX="314.0" prefHeight="144.0" prefWidth="143.0">
+                                 <children>
+                                    <Ellipse fill="DODGERBLUE" radiusX="63.0" radiusY="64.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Label text="3" />
+                                 </children>
+                              </StackPane>
+                              <StackPane layoutX="14.0" layoutY="144.0" prefHeight="119.0" prefWidth="114.0">
+                                 <children>
+                                    <Ellipse fill="DODGERBLUE" radiusX="71.0" radiusY="60.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Label text="4" />
+                                 </children>
+                              </StackPane>
+                              <StackPane layoutX="186.0" layoutY="140.0" prefHeight="114.0" prefWidth="118.0">
+                                 <children>
+                                    <Ellipse fill="DODGERBLUE" radiusX="64.0" radiusY="40.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Label text="5" />
+                                 </children>
+                              </StackPane>
+                              <StackPane layoutX="14.0" layoutY="285.0" prefHeight="125.0" prefWidth="164.0">
+                                 <children>
+                                    <Ellipse fill="DODGERBLUE" radiusX="66.0" radiusY="62.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Label text="6" />
+                                 </children>
+                              </StackPane>
+                              <StackPane layoutX="177.0" layoutY="272.0" prefHeight="123.0" prefWidth="145.0">
+                                 <children>
+                                    <Ellipse fill="DODGERBLUE" radiusX="50.0" radiusY="75.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Label text="7" />
+                                 </children>
+                              </StackPane>
+                              <StackPane layoutX="331.0" layoutY="163.0" prefHeight="122.0" prefWidth="158.0">
+                                 <children>
+                                    <Ellipse fill="DODGERBLUE" radiusX="60.0" radiusY="57.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Label text="8" />
+                                 </children>
+                              </StackPane>
+                              <StackPane layoutX="343.0" layoutY="292.0" prefHeight="118.0" prefWidth="134.0">
+                                 <children>
+                                    <Ellipse fill="DODGERBLUE" radiusX="63.0" radiusY="41.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Label text="9" />
+                                 </children>
+                              </StackPane>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="398.0" layoutX="613.0" layoutY="33.0" stroke="BLACK" strokeType="INSIDE" width="18.0" />
+                              <Label alignment="CENTER" layoutX="619.0" layoutY="229.0" prefHeight="17.0" prefWidth="76.0" rotate="-90.0" text="COCINA">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Label fx:id="numComensales" text="NUMERO COMENSALES:">
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="totalFacturado" text="TOTAL FACTURADO:">
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+          <Tab text="Diseño plano">
+               <content>
+                  <Pane prefHeight="523.0" prefWidth="700.0">
+                     <children>
+                        <StackPane layoutX="30.0" layoutY="14.0" prefHeight="62.0" prefWidth="70.0">
+                           <children>
+                              <Ellipse fill="DODGERBLUE" radiusX="52.0" radiusY="42.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Label text="1" />
+                           </children>
+                        </StackPane>
+                        <StackPane layoutX="156.0" layoutY="14.0" prefHeight="106.0" prefWidth="126.0">
+                           <children>
+                              <Ellipse fill="DODGERBLUE" radiusX="65.0" radiusY="39.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Label text="2" />
+                           </children>
+                        </StackPane>
+                        <StackPane layoutX="314.0" prefHeight="144.0" prefWidth="143.0">
+                           <children>
+                              <Ellipse fill="DODGERBLUE" radiusX="63.0" radiusY="64.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Label text="3" />
+                           </children>
+                        </StackPane>
+                        <StackPane layoutX="14.0" layoutY="144.0" prefHeight="119.0" prefWidth="114.0">
+                           <children>
+                              <Ellipse fill="DODGERBLUE" radiusX="71.0" radiusY="60.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Label text="4" />
+                           </children>
+                        </StackPane>
+                        <StackPane layoutX="186.0" layoutY="140.0" prefHeight="114.0" prefWidth="118.0">
+                           <children>
+                              <Ellipse fill="DODGERBLUE" radiusX="64.0" radiusY="40.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Label text="5" />
+                           </children>
+                        </StackPane>
+                        <StackPane layoutX="14.0" layoutY="285.0" prefHeight="125.0" prefWidth="164.0">
+                           <children>
+                              <Ellipse fill="DODGERBLUE" radiusX="66.0" radiusY="62.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Label text="6" />
+                           </children>
+                        </StackPane>
+                        <StackPane layoutX="177.0" layoutY="272.0" prefHeight="123.0" prefWidth="145.0">
+                           <children>
+                              <Ellipse fill="DODGERBLUE" radiusX="50.0" radiusY="75.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Label text="7" />
+                           </children>
+                        </StackPane>
+                        <StackPane layoutX="331.0" layoutY="163.0" prefHeight="122.0" prefWidth="158.0">
+                           <children>
+                              <Ellipse fill="DODGERBLUE" radiusX="60.0" radiusY="57.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Label text="8" />
+                           </children>
+                        </StackPane>
+                        <StackPane layoutX="343.0" layoutY="292.0" prefHeight="118.0" prefWidth="134.0">
+                           <children>
+                              <Ellipse fill="DODGERBLUE" radiusX="63.0" radiusY="41.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Label text="9" />
+                           </children>
+                        </StackPane>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="398.0" layoutX="613.0" layoutY="33.0" stroke="BLACK" strokeType="INSIDE" width="18.0" />
+                        <Label alignment="CENTER" layoutX="619.0" layoutY="229.0" prefHeight="17.0" prefWidth="76.0" rotate="-90.0" text="COCINA">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </content>
+          </Tab>
+            <Tab text="Gestión menú">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <bottom>
+                        <HBox prefHeight="42.0" prefWidth="700.0" spacing="50.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button mnemonicParsing="false" onMouseClicked="#AgregarMenu" text="Agregar" />
+                              <Button mnemonicParsing="false" onMouseClicked="#EditarMenu" text="Editar" />
+                              <Button mnemonicParsing="false" onMouseClicked="#EliminarMenu" text="Eliminar" />
+                           </children>
+                           <BorderPane.margin>
+                              <Insets />
+                           </BorderPane.margin>
+                           <padding>
+                              <Insets left="250.0" />
+                           </padding>
+                        </HBox>
+                     </bottom>
+                     <center>
+                        <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                     </center>
+                     <top>
+                        <Label prefHeight="39.0" prefWidth="198.0" text="El Menu de Hoy" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font size="27.0" />
+                           </font>
+                           <BorderPane.margin>
+                              <Insets left="70.0" />
+                           </BorderPane.margin>
+                        </Label>
+                     </top>
+                  </BorderPane>
+               </content></Tab>
+            <Tab text="Reporte ventas">
+               <content>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="49.0" prefWidth="700.0" spacing="10.0">
+                           <children>
+                              <Label text="Fecha Inicio">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="fechaInicio" />
+                              <Label text="Fecha Fin" />
+                              <TextField fx:id="fechaFin" />
+                              <Button fx:id="filtrar" mnemonicParsing="false" onMouseClicked="#filtrar" text="Filtrar">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </HBox>
+                        <TableView prefHeight="520.0" prefWidth="700.0">
+                          <columns>
+                            <TableColumn prefWidth="116.0" text="Fecha" />
+                            <TableColumn prefWidth="116.0" text="Mesa" />
+                              <TableColumn prefWidth="116.0" text="Mesero" />
+                              <TableColumn prefWidth="116.3" text="N. Cuenta" />
+                              <TableColumn prefWidth="116.3" text="Cliente" />
+                              <TableColumn prefWidth="116.3" text="Total" />
+                          </columns>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </TableView>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+   <right>
+      <Button mnemonicParsing="false" onMouseClicked="#IrLogin" prefHeight="30.0" prefWidth="100.0" text="Salir" BorderPane.alignment="TOP_LEFT">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </Button>
+   </right>
+</BorderPane>
