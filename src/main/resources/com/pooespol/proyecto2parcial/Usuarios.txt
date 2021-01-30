@@ -1,0 +1,3 @@
+Administrador;alfrcall@espol.edu.ec;12345
+Administrador;usuario1;01234
+Mesero;usuario2;56789

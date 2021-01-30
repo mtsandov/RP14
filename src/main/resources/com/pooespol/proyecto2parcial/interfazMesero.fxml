@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -17,7 +18,7 @@
       </Label>
       <AnchorPane prefHeight="348.0" prefWidth="600.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#848484" height="347.0" layoutX="-1.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="700.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#848484" height="354.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0" />
             <Ellipse fill="#e4ff1e" layoutX="526.0" layoutY="65.0" onMouseClicked="#irPedido" radiusX="35.0" radiusY="22.0" stroke="#e4ff1e" strokeType="INSIDE" />
             <Circle fill="#e4ff1e" layoutX="47.0" layoutY="47.0" onMouseClicked="#irPedido" radius="25.0" stroke="#e4ff1e" strokeType="INSIDE" />
             <Circle fill="#e4ff1e" layoutX="190.0" layoutY="47.0" onMouseClicked="#irPedido" radius="25.0" stroke="#e4ff1e" strokeType="INSIDE" />
@@ -109,6 +110,7 @@
                   <Font size="25.0" />
                </font>
             </Label>
+            <Button layoutY="325.0" mnemonicParsing="false" onMouseClicked="#irLogin" prefHeight="28.0" prefWidth="700.0" text="Cerrar Sesion" />
          </children>
       </AnchorPane>
    </children>

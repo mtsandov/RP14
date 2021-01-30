@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -25,9 +24,8 @@ import javafx.scene.input.MouseEvent;
  * @author UserPC
  */
 public class LoginController implements Initializable {
-    
+    private ArrayList<Usuario> usuarios;
     App app = new App();
-
 
     @FXML
     private TextField txtCorreo;
@@ -35,6 +33,24 @@ public class LoginController implements Initializable {
     private PasswordField txtContrasena;
     @FXML
     private Label txtMostrar;
+    @FXML
+    private Label irRegistro;
+
+    public LoginController() {
+        usuarios= new ArrayList<>();
+        Administrador a1 = new Administrador("alfrcall@espol.edu.ec","12345");
+        Administrador a2 = new Administrador("usuario1","01234");
+        Mesero m2 = new Mesero("usuario2","56789");
+        usuarios.add(a1);
+        usuarios.add(a2);
+        usuarios.add(m2);
+        
+        for(Usuario u: usuarios){
+            System.out.println(u.getCorreo()+ ";"+ u.getContrasena() + ";"+ u.toString());
+        }
+    }
+    
+
     /**
      * Initializes the controller class.
      */
@@ -42,12 +58,13 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
     
     @FXML
     private void irInterfaz(MouseEvent event) {
-        ArrayList<Usuario> usuarios = app.getUsuarios();
+        ArrayList<Usuario> us = usuarios;
         boolean b = false;
-        for(Usuario u: usuarios){
+        for(Usuario u: us){
             if((u.getCorreo().equals(txtCorreo.getText())) && (u.getContrasena().equals(txtContrasena.getText()))){
                     if(u instanceof Administrador){
                         try{
@@ -74,5 +91,26 @@ public class LoginController implements Initializable {
             txtMostrar.setText("Datos incorrectos");
         }
     }
+
+    @FXML
+    private void irRegistrar(MouseEvent event) {
+        try {      
+            App.setRoot("RegistrarCuenta");
+        } catch (IOException ex) {
+            System.out.println("Ocurrio Algo");
+            System.out.println(ex);
+        }
+    }
+
+    public void aggUsuarios(Usuario u) {
+        usuarios.add(u);
+    }
+
+    public ArrayList<Usuario> getUsuarios() {
+        return usuarios;
+    }
+    
+    
+    
 
 }

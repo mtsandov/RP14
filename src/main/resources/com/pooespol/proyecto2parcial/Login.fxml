@@ -9,14 +9,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.proyecto2parcial.LoginController">
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="97.0" prefWidth="700.0">
          <children>
             <Label text="Iniciar Sesion">
                <font>
-                  <Font size="30.0" />
+                  <Font name="System Bold" size="30.0" />
                </font>
             </Label>
          </children>
@@ -26,7 +25,7 @@
       </HBox>
       <VBox prefHeight="150.0" prefWidth="700.0" spacing="5.0">
          <children>
-            <Label text="Usuario">
+            <Label text="Correo">
                <font>
                   <Font size="18.0" />
                </font>
@@ -38,6 +37,11 @@
                </font>
             </Label>
             <PasswordField fx:id="txtContrasena" />
+            <Label fx:id="irRegistro" onMouseClicked="#irRegistrar" text="Registrarse" textFill="#4b52d2" underline="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
          <padding>
             <Insets left="100.0" right="100.0" />
@@ -51,7 +55,7 @@
             <Insets left="100.0" right="100.0" />
          </padding>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="220.0">
          <children>
             <Label fx:id="txtMostrar" text="Copyright © Alfredo-Victor-Angel">
                <font>

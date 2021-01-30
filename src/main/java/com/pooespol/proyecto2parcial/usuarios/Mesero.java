@@ -12,7 +12,7 @@ package com.pooespol.proyecto2parcial.usuarios;
 public class Mesero extends Usuario{
 
     public Mesero(String correo, String contrasena) {
-        super(correo, contrasena);
+        super(correo, contrasena,"Mesero");
     }
     
     

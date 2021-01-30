@@ -35,6 +35,16 @@ public class InterfazMeseroController implements Initializable {
             ex.printStackTrace();
         }
     }
+
+    @FXML
+    private void irLogin(MouseEvent event) {
+        try {
+            App.setRoot("Login");
+        } catch (IOException ex) {
+            System.out.println("Ocurrio algo");
+            System.out.println(ex);
+        }
+    }
     
     
     

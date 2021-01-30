@@ -13,10 +13,12 @@ public class Usuario {
     
     private String correo;
     private String contrasena;
+    private String tipo = "Usuario";
 
-    public Usuario(String correo, String contrasena) {
+    public Usuario(String correo, String contrasena, String tipo) {
         this.correo = correo;
         this.contrasena = contrasena;
+        this.tipo = tipo;
     }
 
     
@@ -34,6 +36,11 @@ public class Usuario {
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
+    }
+
+    @Override
+    public String toString() {
+        return tipo;
     }
     
     

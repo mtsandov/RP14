@@ -12,7 +12,7 @@ package com.pooespol.proyecto2parcial.usuarios;
 public class Administrador extends Usuario{
 
     public Administrador(String correo, String contrasena) {
-        super(correo, contrasena);
+        super(correo, contrasena,"Administrador");
     }
     
     
