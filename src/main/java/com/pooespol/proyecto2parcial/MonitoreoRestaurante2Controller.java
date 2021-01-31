@@ -12,9 +12,13 @@ import com.pooespol.proyecto2parcial.modelo.Mesa;
 import com.pooespol.proyecto2parcial.modelo.Plato;
 import com.pooespol.proyecto2parcial.modelo.Ubicacion;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -178,6 +182,7 @@ public class MonitoreoRestaurante2Controller implements Initializable {
         try {
             List<Plato> platos = PlatoData.leerPlatos();
             for(Plato p: platos){
+                System.out.println(p);
                 VBox vbox = new VBox();
                 InputStream inputImg = App.class.getResource(p.getImagen()).openStream();
                 ImageView imgv = new ImageView(new Image(inputImg));
@@ -190,6 +195,8 @@ public class MonitoreoRestaurante2Controller implements Initializable {
             
         } catch (IOException ex) {
             System.out.println("Paso algo");
+        } catch (ArchivosException ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -209,21 +216,48 @@ public class MonitoreoRestaurante2Controller implements Initializable {
         Button bt =new Button("Agregar Plato");
         bt.setAlignment(Pos.CENTER);
         bt.setOnAction((EvenAction)->{
-        try {
-            List<Plato> platos = PlatoData.leerPlatos();
+       // try {
+          /*  List<Plato> platos = PlatoData.leerPlatos();
+            
                 VBox vbox = new VBox();
-                BufferedWriter bf = new BufferedWriter(new FileWriter("platos.txt"));
+                URL u = App.class.getResource("platos.txt");
+                File file = new File(u.toURI());
+                if (!file.exists()) {
+            file.createNewFile();
+        }
+                BufferedWriter bf =new BufferedWriter (new FileWriter("platos.txt"));
+                //BufferedWriter bf = new BufferedWriter(new FileWriter(file.getAbsoluteFile(),true));
                 String nombrePlato = (String)cb.getValue();
                 String precio = t1.getText();
-                bf.write(nombrePlato+";"+precio+";"+nombrePlato+".png"+"\n");
+                bf.write(nombrePlato+";"+precio+";"+nombrePlato+".png");
+                bf.newLine();
+                
+                System.out.println("Se agrego");
                 VBox vb2 = new VBox();
                 Label l3 = new Label(nombrePlato);
                 Label l4 = new Label("$ "+precio);
                 vb2.getChildren().addAll(l3,l4);               
+                panelGestionMenu.getChildren().add(vb2);*/
+           String nombrePlato = (String)cb.getValue();
+                String precio = t1.getText();
+          Plato plato = new Plato(nombrePlato,Integer.valueOf(precio),nombrePlato+".jpeg");
+            try {
+                PlatoData.agregarPlatosArchivo(plato);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ArchivosException ex) {
+                ex.printStackTrace();
+            }
+          VBox vb2 = new VBox();
+                Label l3 = new Label(nombrePlato);
+                Label l4 = new Label("$ "+precio);
+                vb2.getChildren().addAll(l3,l4);               
                 panelGestionMenu.getChildren().add(vb2);
-        } catch (IOException ex) {
+     /*   } catch (IOException ex) {
             System.out.println("Paso algo");
-        }
+        }   catch (URISyntaxException ex) {
+                ex.printStackTrace();
+        }   */
            
         });
         vb.getChildren().addAll(hb,hb2,bt);

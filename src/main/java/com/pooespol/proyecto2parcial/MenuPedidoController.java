@@ -5,6 +5,7 @@
  */
 package com.pooespol.proyecto2parcial;
 
+import com.pooespol.proyecto2parcial.data.ArchivosException;
 import com.pooespol.proyecto2parcial.data.PlatoData;
 import com.pooespol.proyecto2parcial.modelo.Plato;
 import java.io.IOException;
@@ -60,6 +61,8 @@ public class MenuPedidoController implements Initializable {
             
         } catch (IOException ex) {
             System.out.println("Paso algo");
+        } catch (ArchivosException ex) {
+            ex.printStackTrace();
         }
     }    
 
