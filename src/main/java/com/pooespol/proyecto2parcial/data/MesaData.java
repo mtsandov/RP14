@@ -92,5 +92,31 @@ public class MesaData {
         }
 
     }
+    public static Mesa buscarMesaPorNumero(String numero) throws ArchivosException{
+        String ruta = "UbicacionMesas.txt";
+        try (InputStream input = App.class.getResource(ruta).openStream();
+                BufferedReader bf = new BufferedReader(new InputStreamReader(input, "UTF-8"))) {
+            String linea;
+            Mesa mesa = null;
+            while ((linea = bf.readLine()) != null) {
+                System.out.println(linea);
+                String[] lista = linea.split(";");
+                if(lista[1].equals(numero)){
+                    double X = Double.valueOf(lista[2].split(":")[0]);
+                    double Y = Double.valueOf(lista[2].split(":")[1]);
+                    Ubicacion ub = new Ubicacion(X,Y);
+                    int capacidad = Integer.valueOf(lista[4]);
+                    Mesa m = new Mesa(Integer.valueOf(lista[1]),ub,lista[0],lista[3],capacidad);
+                    mesa=m;
+                    break;
+                }
+            }
+            return mesa;
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
+            throw new ArchivosException(ruta, ex.getMessage());
+        }
+    }
 
 }

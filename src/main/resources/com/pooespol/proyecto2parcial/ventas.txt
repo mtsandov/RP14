@@ -1,0 +1,5 @@
+01-12-2020;1;Margarita;1;Cliente1;20
+01-12-2020;2;Alex;3;Cliente2;15
+02-12-2020;3;Angel;2;Cliente3;17
+02-12-2020;4;Victor;4;Cliente4;25
+03-12-2020;5;Alfredo;5;Cliente5;19

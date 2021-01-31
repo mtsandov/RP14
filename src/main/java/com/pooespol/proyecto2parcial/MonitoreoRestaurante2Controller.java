@@ -11,9 +11,14 @@ import com.pooespol.proyecto2parcial.modelo.Mesa;
 import com.pooespol.proyecto2parcial.modelo.Ubicacion;
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -21,8 +26,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -51,6 +60,21 @@ public class MonitoreoRestaurante2Controller implements Initializable {
     private Pane panelMesas;
     @FXML
     private Pane panelMesaDP;
+    @FXML
+    private TableColumn<Ventas, String> fechaCol;
+    @FXML
+    private TableColumn<Ventas, String> mesaCol;
+    @FXML
+    private TableColumn<Ventas, String> meseroCol;
+    @FXML
+    private TableColumn<Ventas, String> cuentaCol;
+    @FXML
+    private TableColumn<Ventas, String> clienteCol;
+    @FXML
+    private TableColumn<Ventas, String> totalCol;
+    @FXML
+    private TableView<Ventas> ventasTable;
+
 
     /**
      * Initializes the controller class.
@@ -112,7 +136,24 @@ public class MonitoreoRestaurante2Controller implements Initializable {
 
   
         });    
-
+        SimpleDateFormat dateFormat = new SimpleDateFormat ("dd-MM-yyyy");
+        List<Ventas> ventas = new ArrayList<>();
+        final ObservableList<Ventas> ventasFiltradas = FXCollections.observableArrayList();
+        try {
+            ventas = Ventas.leerVentas();
+            for(Ventas v : ventas){
+                  ventasFiltradas.add(v);
+            }
+        fechaCol.setCellValueFactory(new PropertyValueFactory<Ventas, String>("fecha"));
+        mesaCol.setCellValueFactory(new PropertyValueFactory<Ventas, String>("mesa"));
+        meseroCol.setCellValueFactory(new PropertyValueFactory<Ventas, String>("mesero"));
+        cuentaCol.setCellValueFactory(new PropertyValueFactory<Ventas, String>("cuenta"));
+        clienteCol.setCellValueFactory(new PropertyValueFactory<Ventas, String>("cliente"));
+        totalCol.setCellValueFactory(new PropertyValueFactory<Ventas, String>("venta"));
+       ventasTable.setItems(ventasFiltradas);
+        } catch (ArchivosException ex) {
+            System.out.println("Ocurrio Algo");;
+        }
         
 
         // TODO
@@ -132,7 +173,42 @@ public class MonitoreoRestaurante2Controller implements Initializable {
     }
 
     @FXML
-    private void filtrar(MouseEvent event) {
+    private void filtrar(MouseEvent event) throws ParseException, ArchivosException {
+      //  List<Ventas> ventasFiltradas = new ArrayList<>();
+     // ArrayList<Ventas> arrayventas=new ArrayList<>();
+
+      final ObservableList<Ventas> ventasFiltradas = FXCollections.observableArrayList();
+     /* new Ventas("01-12-2020","1","Margarita","1","Cliente1","20"),
+      new Ventas("02-12-2020","1","Margarita","1","Cliente1","20"),        
+      new Ventas("03-12-2020","1","Margarita","1","Cliente1","20"));*/
+       SimpleDateFormat dateFormat = new SimpleDateFormat ("dd-MM-yyyy");
+       //DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String fInicio = fechaInicio.getText();
+        String fFin = fechaFin.getText();
+        List<Ventas> ventas = new ArrayList<>();
+        ventas = Ventas.leerVentas();
+        for(Ventas v : ventas){
+            String fechaVenta= v.getFecha();
+            Date dateInicio=dateFormat.parse(fInicio);
+            Date dateFin=dateFormat.parse(fFin);
+            Date dateVenta=dateFormat.parse(fechaVenta);
+            if((dateVenta.after(dateInicio)|| dateVenta.equals(dateInicio)) && 
+                    (dateVenta.before(dateFin) || dateVenta.equals(dateFin))){ 
+                    System.out.println(v);
+                    System.out.println("entre");
+                  ventasFiltradas.add(v);
+            }
+
+        }//ventasFiltradas.add(arrayventas);
+        
+        //ventasTable.getColumns().addAll(fechaCol,mesaCol,meseroCol,cuentaCol,clienteCol,totalCol);
+       fechaCol.setCellValueFactory(new PropertyValueFactory<Ventas, String>("fecha"));
+        mesaCol.setCellValueFactory(new PropertyValueFactory<Ventas, String>("mesa"));
+        meseroCol.setCellValueFactory(new PropertyValueFactory<Ventas, String>("mesero"));
+        cuentaCol.setCellValueFactory(new PropertyValueFactory<Ventas, String>("cuenta"));
+        clienteCol.setCellValueFactory(new PropertyValueFactory<Ventas, String>("cliente"));
+        totalCol.setCellValueFactory(new PropertyValueFactory<Ventas, String>("venta"));
+        ventasTable.setItems(ventasFiltradas);        
     }
 
     @FXML
