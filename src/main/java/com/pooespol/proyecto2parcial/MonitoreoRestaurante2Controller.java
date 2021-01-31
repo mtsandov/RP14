@@ -7,9 +7,14 @@ package com.pooespol.proyecto2parcial;
 
 import com.pooespol.proyecto2parcial.data.ArchivosException;
 import com.pooespol.proyecto2parcial.data.MesaData;
+import com.pooespol.proyecto2parcial.data.PlatoData;
 import com.pooespol.proyecto2parcial.modelo.Mesa;
+import com.pooespol.proyecto2parcial.modelo.Plato;
 import com.pooespol.proyecto2parcial.modelo.Ubicacion;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,6 +26,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -30,8 +36,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -74,6 +83,8 @@ public class MonitoreoRestaurante2Controller implements Initializable {
     private TableColumn<Ventas, String> totalCol;
     @FXML
     private TableView<Ventas> ventasTable;
+    @FXML
+    private FlowPane panelGestionMenu;
 
 
     /**
@@ -120,7 +131,7 @@ public class MonitoreoRestaurante2Controller implements Initializable {
         panelMesaDP.setOnMouseClicked((MouseEvent ev) -> {
           
                 //public Mesa(int numMesa, Ubicacion ub, String mesero, String estado, int capacidad) {
-                informacionMesa(0, 0, null, "DesOcupado", "DisenoPlano", new Ubicacion(ev.getX(),ev.getY()));
+        informacionMesa(0, 0, null, "DesOcupado", "DisenoPlano", new Ubicacion(ev.getX(),ev.getY()));
                 //Mesa mes = new Mesa(0, new Ubicacion(ev.getX(),ev.getY()), null, "DesOcupado",0);  
                 //MesaData.agregarMesaArchivos(mes);
                 
@@ -155,21 +166,83 @@ public class MonitoreoRestaurante2Controller implements Initializable {
             System.out.println("Ocurrio Algo");;
         }
         
-
-        // TODO
-       
+        String facturado;
+        try {
+            facturado = String.valueOf(Ventas.calcularFacturado());
+            totalFacturado.setText("Total Facturado: $"+facturado);
+        } catch (ArchivosException ex) {
+            System.out.println("Ocurrio Algo en sistemas...");;
+        } 
+        
+        
+        try {
+            List<Plato> platos = PlatoData.leerPlatos();
+            for(Plato p: platos){
+                VBox vbox = new VBox();
+                InputStream inputImg = App.class.getResource(p.getImagen()).openStream();
+                ImageView imgv = new ImageView(new Image(inputImg));
+                vbox.getChildren().add(imgv);
+                vbox.getChildren().add(new Label(p.getNombre()));
+                vbox.getChildren().add(new Label("$ " + String.valueOf(p.getPrecio())));
+                vbox.setPadding(new Insets(2,3,3,4));              
+                panelGestionMenu.getChildren().add(vbox);
+            }
+            
+        } catch (IOException ex) {
+            System.out.println("Paso algo");
+        }
     }
 
     @FXML
     private void AgregarMenu(MouseEvent event) {
+        Stage st = new Stage();
+        VBox vb = new VBox(0.5);
+        HBox hb = new HBox(0.5);
+        HBox hb2= new HBox(0.5);
+        Label l1 = new Label("Ingrese el nombre del plato: ");
+        Label l2 = new Label("Ingrese el precio del plato: ");
+        TextField t1 = new TextField();
+        ComboBox cb  = new ComboBox();
+        cb.getItems().addAll("Guatita","Bollos","Bandera","Yapingacho");
+        hb.getChildren().addAll(l1,cb);
+        hb2.getChildren().addAll(l2,t1);
+        Button bt =new Button("Agregar Plato");
+        bt.setAlignment(Pos.CENTER);
+        bt.setOnAction((EvenAction)->{
+        try {
+            List<Plato> platos = PlatoData.leerPlatos();
+                VBox vbox = new VBox();
+                BufferedWriter bf = new BufferedWriter(new FileWriter("platos.txt"));
+                String nombrePlato = (String)cb.getValue();
+                String precio = t1.getText();
+                bf.write(nombrePlato+";"+precio+";"+nombrePlato+".png"+"\n");
+                VBox vb2 = new VBox();
+                Label l3 = new Label(nombrePlato);
+                Label l4 = new Label("$ "+precio);
+                vb2.getChildren().addAll(l3,l4);               
+                panelGestionMenu.getChildren().add(vb2);
+        } catch (IOException ex) {
+            System.out.println("Paso algo");
+        }
+           
+        });
+        vb.getChildren().addAll(hb,hb2,bt);
+        Scene sc = new Scene(vb,800,400);
+        st.setScene(sc);
+        st.show();
+        
+        
+        
     }
 
     @FXML
     private void EditarMenu(MouseEvent event) {
-    }
 
+    }
     @FXML
     private void EliminarMenu(MouseEvent event) {
+
+        
     }
 
     @FXML
@@ -300,11 +373,13 @@ public class MonitoreoRestaurante2Controller implements Initializable {
     public void iniciarElementosPanel(Pane p, String pestana){
         try{
             List<Mesa> mesas = MesaData.cargarMesaArchivos("UbicacionMesas.txt");
-            
+            int totalComensales = 0;
             for(Mesa m: mesas){
                 Circle  c = new Circle(30, Color.BLUE);
                 if(m.getEstado().equals("Ocupado")){
                      c = new Circle(30, Color.RED);
+                     int capacidad = m.getCapacidad();
+                     totalComensales+=capacidad;
                 }else if(m.getEstado().equals("DesOcupado")){
                     c = new Circle(30, Color.YELLOW);
                 }
@@ -332,7 +407,7 @@ public class MonitoreoRestaurante2Controller implements Initializable {
                 });
                 **/
                 
-            }     
+            } numComensales.setText(String.valueOf("Total de Comensales: "+totalComensales));
         }catch (ArchivosException ex) {
             System.out.println("Ocurrio algo en monitoreo restaurante 2");
         }

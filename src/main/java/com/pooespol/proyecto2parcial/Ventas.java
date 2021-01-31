@@ -91,4 +91,26 @@ public class Ventas {
         }
         return ventas;
     }
+    public static double calcularFacturado() throws ArchivosException{
+     String ruta = "ventas.txt";
+        List<Ventas> ventas = new ArrayList<>();
+        double facturado=0;
+        try (InputStream input = App.class.getResource(ruta).openStream();
+                BufferedReader bf = new BufferedReader(
+                        new InputStreamReader(input, "UTF-8"))) {
+            String linea;
+            while ((linea = bf.readLine()) != null) {
+                System.out.println(linea);
+                String[] lista = linea.split(";");
+                for(String datos: lista){
+                    double monto = Double.valueOf(lista[5]);
+                    facturado+=monto;
+                }
+            }
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
+            throw new ArchivosException(ruta, ex.getMessage());
+        }return facturado;
+    }
  }

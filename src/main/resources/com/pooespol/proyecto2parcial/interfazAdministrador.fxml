@@ -81,7 +81,7 @@
                         </HBox>
                      </bottom>
                      <center>
-                        <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                        <FlowPane fx:id="panelGestionMenu" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
                      </center>
                      <top>
                         <Label prefHeight="39.0" prefWidth="198.0" text="El Menu de Hoy" BorderPane.alignment="CENTER">
