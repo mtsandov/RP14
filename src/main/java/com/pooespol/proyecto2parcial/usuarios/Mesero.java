@@ -10,9 +10,12 @@ package com.pooespol.proyecto2parcial.usuarios;
  * @author UserPC
  */
 public class Mesero extends Usuario{
+    
+    private String nombre;
 
-    public Mesero(String correo, String contrasena) {
+    public Mesero(String correo, String contrasena, String nombre) {
         super(correo, contrasena,"Mesero");
+        this.nombre = nombre;
     }
     
     

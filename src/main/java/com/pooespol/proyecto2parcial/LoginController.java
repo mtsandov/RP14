@@ -40,7 +40,7 @@ public class LoginController implements Initializable {
         usuarios= new ArrayList<>();
         Administrador a1 = new Administrador("alfrcall@espol.edu.ec","12345");
         Administrador a2 = new Administrador("usuario1","01234");
-        Mesero m2 = new Mesero("usuario2","56789");
+        Mesero m2 = new Mesero("usuario2","56789","Victor");
         usuarios.add(a1);
         usuarios.add(a2);
         usuarios.add(m2);
@@ -72,7 +72,7 @@ public class LoginController implements Initializable {
                             App.setRoot("interfazAdministrador");
                             break;
                         }catch(IOException ex){
-                            System.out.println("Sucedio algo");
+                            System.out.println("Sucedio algo en el login parte administrador");
                             System.err.println(ex);
                         }                     
                     }else if(u instanceof Mesero){

@@ -42,7 +42,7 @@ public class UsuarioData {
                         usuarios.add(a);
 
                     }else if(partes[0].equals("Mesero")){
-                        Mesero m = new Mesero(partes[1],partes[2]);
+                        Mesero m = new Mesero(partes[1],partes[2],partes[3]);
                         usuarios.add(m);
                     }
                 }    

@@ -63,7 +63,7 @@ public class RegistrarCuentaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         List<Usuario> usuarios = new ArrayList<>();
         usuarios.add(new Administrador(null,null));
-        usuarios.add(new Mesero(null,null));
+        usuarios.add(new Mesero(null,null,null));
         tipoUsuario.getItems().addAll(usuarios);
         
         
@@ -85,7 +85,7 @@ public class RegistrarCuentaController implements Initializable {
                 b = true;
             }else if(u instanceof Mesero){
                 //UsuarioData.registrarUsuarios(new Mesero(correo,contrasena));
-                lc.aggUsuarios(new Mesero(correo,contrasena));
+                lc.aggUsuarios(new Mesero(correo,contrasena,"Victor"));
                 txtMostrar.setText("Cuenta Mesero Registrada");
                 b = true;
             }      

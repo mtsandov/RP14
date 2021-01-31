@@ -26,80 +26,14 @@
                <content>
                   <VBox prefHeight="570.0" prefWidth="676.0">
                      <children>
-                        <Pane prefHeight="523.0" prefWidth="700.0">
+                        <Pane fx:id="panelMesas" prefHeight="523.0" prefWidth="700.0">
                            <children>
-                              <StackPane layoutX="26.0" layoutY="28.0" prefHeight="62.0" prefWidth="70.0">
-                                 <children>
-                                    <Ellipse fill="DODGERBLUE" radiusX="30.0" radiusY="30.0" stroke="BLACK" strokeType="INSIDE" />
-                                    <Label text="1" />
-                                 </children>
-                              </StackPane>
-                              <StackPane layoutX="81.0" layoutY="5.0" prefHeight="106.0" prefWidth="126.0">
-                                 <children>
-                                    <Ellipse fill="DODGERBLUE" radiusX="30.0" radiusY="30.0" stroke="BLACK" strokeType="INSIDE" />
-                                    <Label text="2" />
-                                 </children>
-                              </StackPane>
-                              <StackPane layoutX="164.0" layoutY="-14.0" prefHeight="144.0" prefWidth="143.0">
-                                 <children>
-                                    <Ellipse fill="DODGERBLUE" radiusX="30.0" radiusY="30.0" stroke="BLACK" strokeType="INSIDE" />
-                                    <Label text="3" />
-                                 </children>
-                              </StackPane>
-                              <StackPane layoutX="265.0" layoutY="-1.0" prefHeight="119.0" prefWidth="114.0">
-                                 <children>
-                                    <Ellipse fill="DODGERBLUE" radiusX="30.0" radiusY="30.0" stroke="BLACK" strokeType="INSIDE" />
-                                    <Label text="4" />
-                                 </children>
-                              </StackPane>
-                              <StackPane layoutX="14.0" layoutY="131.0" prefHeight="114.0" prefWidth="118.0">
-                                 <children>
-                                    <Ellipse fill="DODGERBLUE" radiusX="50.0" radiusY="50.0" stroke="BLACK" strokeType="INSIDE" />
-                                    <Label text="5" />
-                                 </children>
-                              </StackPane>
-                              <StackPane layoutX="109.0" layoutY="126.0" prefHeight="125.0" prefWidth="164.0">
-                                 <children>
-                                    <Ellipse fill="DODGERBLUE" radiusX="50.0" radiusY="50.0" stroke="BLACK" strokeType="INSIDE" />
-                                    <Label text="6" />
-                                 </children>
-                              </StackPane>
-                              <StackPane layoutX="1.0" layoutY="273.0" prefHeight="123.0" prefWidth="145.0">
-                                 <children>
-                                    <Ellipse fill="DODGERBLUE" radiusX="50.0" radiusY="50.0" stroke="BLACK" strokeType="INSIDE" />
-                                    <Label text="7" />
-                                 </children>
-                              </StackPane>
-                              <StackPane layoutX="112.0" layoutY="274.0" prefHeight="122.0" prefWidth="158.0">
-                                 <children>
-                                    <Ellipse fill="DODGERBLUE" radiusX="50.0" radiusY="50.0" stroke="BLACK" strokeType="INSIDE" />
-                                    <Label text="8" />
-                                 </children>
-                              </StackPane>
-                              <StackPane layoutX="265.0" layoutY="291.0" prefHeight="118.0" prefWidth="134.0">
-                                 <children>
-                                    <Ellipse fill="DODGERBLUE" radiusX="70.0" radiusY="70.0" stroke="BLACK" strokeType="INSIDE" />
-                                    <Label text="10" />
-                                 </children>
-                              </StackPane>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="398.0" layoutX="642.0" layoutY="47.0" stroke="BLACK" strokeType="INSIDE" width="18.0" />
                               <Label alignment="CENTER" layoutX="635.0" layoutY="232.0" prefHeight="17.0" prefWidth="76.0" rotate="-90.0" text="COCINA">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <StackPane layoutX="265.0" layoutY="118.0" prefHeight="118.0" prefWidth="134.0">
-                                 <children>
-                                    <Ellipse fill="DODGERBLUE" radiusX="70.0" radiusY="70.0" stroke="BLACK" strokeType="INSIDE" />
-                                    <Label text="9" />
-                                 </children>
-                              </StackPane>
-                              <StackPane layoutX="405.0" layoutY="192.0" prefHeight="118.0" prefWidth="134.0">
-                                 <children>
-                                    <Ellipse fill="DODGERBLUE" radiusX="70.0" radiusY="70.0" stroke="BLACK" strokeType="INSIDE" />
-                                    <Label text="11" />
-                                 </children>
-                              </StackPane>
                            </children>
                         </Pane>
                         <Label fx:id="numComensales" text="NUMERO COMENSALES:">
