@@ -1,0 +1,12 @@
+Angel;1;26.0:28.0;Ocupado;5
+Victor;2;81.0:5.0;Ocupado;10
+Angel;3;164.0:-14.0;Ocupado;4
+Nadie;4;265.0:-1.0;DesOcupado;2
+Nadie;5;57.0:141.0;DesOcupado;6
+Nadie;6;109.0:126.0;DesOcupado;3
+Victor;7;1.0:123.0;Ocupado;10
+Nadie;8;112.0:274.0;DesOcupado;5
+Angel;9;265.0:118.0;Ocupado;12
+Angel;10;265.0:291.0;Ocupado;6
+Victor;11;405.0:192.0;Ocupado;6
+null;48;265.0:291.0;DesOcupada;13

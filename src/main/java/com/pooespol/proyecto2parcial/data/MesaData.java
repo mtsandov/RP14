@@ -10,9 +10,14 @@ import com.pooespol.proyecto2parcial.modelo.Mesa;
 import com.pooespol.proyecto2parcial.modelo.Ubicacion;
 import com.pooespol.proyecto2parcial.usuarios.Usuario;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +45,7 @@ public class MesaData {
                 Ubicacion ubicacion = new Ubicacion(Double.valueOf(ub[0]), Double.valueOf(ub[1]));
                 String estado = lista[3];
                 int capacidad = Integer.valueOf(lista[4]);
-                Mesa t = new Mesa(numMesa,ubicacion,nombreMesero,estado,capacidad);
+                Mesa t = new Mesa(numMesa, ubicacion, nombreMesero, estado, capacidad);
                 tiendas.add(t);
             }
         } catch (IOException ex) {
@@ -49,6 +54,43 @@ public class MesaData {
             throw new ArchivosException(ruta, ex.getMessage());
         }
         return tiendas;
+    }
+
+    public static void agregarMesaArchivos(Mesa m)
+            throws ArchivosException {
+
+        String ruta = "UbicacionMesas.txt";
+        List<Mesa> mesas = MesaData.cargarMesaArchivos("UbicacionMesas.txt");
+
+        //try(InputStream input = App.class.getResource(ruta).openStream();
+        //BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out))) {
+        try{
+        URL u = App.class.getResource(ruta);
+        File file = new File(u.toURI());
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
+
+            String linea;
+            for (Mesa me : mesas) {
+                linea = me.getMesero() + ";" + me.getNumMesa() + ";" + me.getUbicacion().getX() + ":"
+                        + me.getUbicacion().getY() + ";" + me.getEstado() + ";" + me.getCapacidad();
+                bw.write(linea);
+                bw.newLine();
+            }
+
+            linea = m.getMesero() + ";" + m.getNumMesa() + ";" + m.getUbicacion().getX() + ":"
+                    + m.getUbicacion().getY() + ";" + m.getEstado() + ";" + m.getCapacidad();
+            bw.write(linea);
+            bw.newLine();
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
+            throw new ArchivosException(ruta, ex.getMessage());
+            }
+        }catch(Exception ex){
+            System.out.println(ex);
+        }
+
     }
 
 }

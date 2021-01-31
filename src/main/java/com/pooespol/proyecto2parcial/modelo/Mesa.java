@@ -63,5 +63,11 @@ public class Mesa {
         return capacidad;
     }
 
+    @Override
+    public String toString() {
+        return estado;
+    }
+
+    
     
 }
