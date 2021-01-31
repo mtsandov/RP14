@@ -8,8 +8,10 @@ package com.pooespol.proyecto2parcial;
 import com.pooespol.proyecto2parcial.data.ArchivosException;
 import com.pooespol.proyecto2parcial.data.MesaData;
 import com.pooespol.proyecto2parcial.modelo.Mesa;
+import com.pooespol.proyecto2parcial.modelo.Ubicacion;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -52,15 +54,21 @@ public class MonitoreoRestaurante2Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+ 
         try{
-           
+            //List<Mesa> mesas = new ArrayList<Mesa>();
+            //Mesa(int numMesa, Ubicacion ub, String mesero, String estado, int capacidad)
+            //Victor;2;81:5;Ocupado;10
+            //Nadie;4;265:-1;DesOcupado;2
+            //mesas.add(new Mesa(2, new Ubicacion(81,5),"Alex","Ocupada",10));
+            //mesas.add(new Mesa(4, new Ubicacion(265,-1),"Nadie","DesOcupada",2));
             List<Mesa> mesas = MesaData.cargarMesaArchivos("UbicacionMesas.txt");
             
             for(Mesa m: mesas){
-                Circle  c = null;
-                if(m.getEstado().equals("Ocupada")){
+                Circle  c = new Circle(30, Color.BLUE);
+                if(m.getEstado().equals("Ocupado")){
                      c = new Circle(30, Color.RED);
-                }else if(m.getEstado().equals("DesOcupada")){
+                }else if(m.getEstado().equals("DesOcupado")){
                     c = new Circle(30, Color.YELLOW);
                 }
                 Label l = new Label(String.valueOf(m.getNumMesa()));
@@ -82,6 +90,7 @@ public class MonitoreoRestaurante2Controller implements Initializable {
         
 
         // TODO
+       
     }
 
     @FXML

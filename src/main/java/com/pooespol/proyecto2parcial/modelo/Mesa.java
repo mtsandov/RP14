@@ -24,6 +24,7 @@ public class Mesa {
         this.ub = ub;
         this.mesero = mesero;
         this.estado = estado;
+        this.capacidad = capacidad;
     }
 
     public int getNumMesa() {

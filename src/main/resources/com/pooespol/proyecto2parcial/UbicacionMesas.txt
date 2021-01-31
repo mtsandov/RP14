@@ -2,7 +2,7 @@ Angel;1;26:28;Ocupado;5
 Victor;2;81:5;Ocupado;10
 Angel;3;164:-14;Ocupado;4
 Nadie;4;265:-1;DesOcupado;2
-Nadie;5;14:131;DesOcupado;6
+Nadie;5;57:141;DesOcupado;6
 Nadie;6;109:126;DesOcupado;3
 Victor;7;1:123;Ocupado;10
 Nadie;8;112:274;DesOcupado;5
