@@ -7,6 +7,7 @@ package com.pooespol.proyecto2parcial;
 
 import com.pooespol.proyecto2parcial.data.ArchivosException;
 import com.pooespol.proyecto2parcial.data.MesaData;
+import static com.pooespol.proyecto2parcial.data.MesaData.editarMesasArchivo;
 import com.pooespol.proyecto2parcial.modelo.Mesa;
 import com.pooespol.proyecto2parcial.modelo.Ubicacion;
 import com.pooespol.proyecto2parcial.usuarios.Mesero;
@@ -177,8 +178,11 @@ public class InterfazMeseroController implements Initializable {
                             System.out.println("en el desocupado");
                             AbrirCuenta(nombreMesero,String.valueOf(m.getNumMesa()));
                             m.setEstado("Ocupado");
-                            System.out.println(m);
+                            System.out.println(m); 
+                            editarMesasArchivo(m);
                         } catch (ArchivosException ex) {
+                            ex.printStackTrace();
+                        } catch (IOException ex) {
                             ex.printStackTrace();
                         }
                     }
@@ -199,7 +203,7 @@ public class InterfazMeseroController implements Initializable {
         
         
     
-    }
+        }
         
   public void AbrirCuenta(final String nombreMesero,final String numMesa) throws ArchivosException{
     List<Ventas> ventas = Ventas.leerVentas();
@@ -214,7 +218,7 @@ public class InterfazMeseroController implements Initializable {
     Label l = new Label("Ingrese nombre del cliente: ");
     TextField t = new TextField();
     Button bt = new Button("Abrir cuenta");
-            hb.getChildren().addAll(l,t);
+    hb.getChildren().addAll(l,t);
     vb.getChildren().addAll(hb,bt);
         Scene sc = new Scene(vb,800,400);
     st.setScene(sc);

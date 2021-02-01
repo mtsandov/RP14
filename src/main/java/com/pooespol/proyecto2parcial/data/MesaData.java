@@ -117,5 +117,36 @@ public class MesaData {
             throw new ArchivosException(ruta, ex.getMessage());
         }
     }
+    
+    public static void editarMesasArchivo(Mesa m) throws IOException, ArchivosException{
+        String ruta = "UbicacionMesas.txt";
+        List<Mesa> mesas = MesaData.cargarMesaArchivos("UbicacionMesas.txt");       
+        try{
+        URL u = App.class.getResource(ruta);
+        File file = new File(u.toURI());
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
+            String linea;
+            for (Mesa me : mesas) {
+                if(me.getNumMesa() == m.getNumMesa()){
+                linea = me.getMesero() + ";" + me.getNumMesa() + ";" + me.getUbicacion().getX() + ":"
+                        + me.getUbicacion().getY() + ";" + m.getEstado() + ";" + me.getCapacidad();
 
-}
+                }else{
+                linea = me.getMesero() + ";" + me.getNumMesa() + ";" + me.getUbicacion().getX() + ":"
+                        + me.getUbicacion().getY() + ";" + me.getEstado() + ";" + me.getCapacidad();
+                }
+                bw.write(linea);
+                bw.newLine();
+            }
+            }catch (IOException ex) {
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
+            throw new ArchivosException(ruta, ex.getMessage());
+            }
+        }catch(Exception ex){
+            System.out.println(ex);
+        }        
+        }
+    }
+
+
