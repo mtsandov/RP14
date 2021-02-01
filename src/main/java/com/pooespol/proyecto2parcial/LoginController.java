@@ -46,9 +46,7 @@ public class LoginController implements Initializable {
     private Label txtMostrar;
     @FXML
     private Label irRegistro;
-     //public String correo = txtCorreo.getText();
     
-   //public static String nombreUsuario = txtCorreo.getText();
     
     public LoginController() {
         usuarios= new ArrayList<>();
@@ -96,10 +94,7 @@ public class LoginController implements Initializable {
                     }else if(u instanceof Mesero){
                         try{
                             b = true;
-                            //FXMLLoader fxmlLoader= new FXMLLoader(App.class.getResource("interfazMesero.fxml"));
-                            //Parent root=fxmlLoader.load();
-                            //InterfazMeseroController it = fxmlLoader.<InterfazMeseroController>getController();
-                            //it.setCorreo(txtCorreo.getText());
+                   
                             App.setRoot("interfazMesero");
                             break;
                         }catch(IOException ex){
@@ -156,10 +151,7 @@ public class LoginController implements Initializable {
     
     public void registrarUsuariosIngresados(Usuario ingresado){
         String ruta = "ingresados.txt";
-      //  List<Mesa> mesas = MesaData.cargarMesaArchivos("UbicacionMesas.txt");
 
-        //try(InputStream input = App.class.getResource(ruta).openStream();
-        //BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out))) {
         try{
         URL u = App.class.getResource(ruta);
         File file = new File(u.toURI());
@@ -167,16 +159,7 @@ public class LoginController implements Initializable {
 
             String linea;
             String linea2;
-         /*   for (Usuario user : usuarios) {
-                if(user instanceof Mesero){
-                    linea=user.getCorreo()+";"+"Mesero";
-                    bw.write(linea);
-                    bw.newLine();
-                } else{
-                    linea=user.getCorreo()+";"+"Administrador";
-                }
-                
-            }*/
+
             BufferedReader bf = new BufferedReader(new FileReader(file));
             //String linea2;
             do{

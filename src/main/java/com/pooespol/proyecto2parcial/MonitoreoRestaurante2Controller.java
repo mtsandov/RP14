@@ -98,30 +98,7 @@ public class MonitoreoRestaurante2Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //Monitoreo
-        /**
-         * try{ //List<Mesa> mesas = new ArrayList<Mesa>(); //Mesa(int numMesa,
-         * Ubicacion ub, String mesero, String estado, int capacidad)
-         * //Victor;2;81:5;Ocupado;10 //Nadie;4;265:-1;DesOcupado;2
-         * //mesas.add(new Mesa(2, new Ubicacion(81,5),"Alex","Ocupada",10));
-         * //mesas.add(new Mesa(4, new
-         * Ubicacion(265,-1),"Nadie","DesOcupada",2)); List<Mesa> mesas =
-         * MesaData.cargarMesaArchivos("UbicacionMesas.txt");
-         *
-         * for(Mesa m: mesas){ Circle c = new Circle(30, Color.BLUE);
-         * if(m.getEstado().equals("Ocupado")){ c = new Circle(30, Color.RED);
-         * }else if(m.getEstado().equals("DesOcupado")){ c = new Circle(30,
-         * Color.YELLOW); } Label l = new Label(String.valueOf(m.getNumMesa()));
-         * StackPane st = new StackPane(); st.getChildren().addAll(c, l);
-         * panelMesas.getChildren().add(st);
-         * st.setLayoutX(m.getUbicacion().getX());
-         * st.setLayoutY(m.getUbicacion().getY());
-         *
-         * st.setOnMouseClicked((MouseEvent ev) -> {
-         * informacionMesa(m.getNumMesa(), m.getCapacidad(), m.getMesero(),
-         * m.getEstado()); }); } }catch (ArchivosException ex) {
-         * System.out.println("Ocurrio algo en monitoreo restaurante 2"); }
-         */
+
         //Diseno Plano
         iniciarElementosPanel(panelMesas, "Monitoreo");
         iniciarElementosPanel(panelMesaDP, "DisenoPlano");
@@ -129,16 +106,6 @@ public class MonitoreoRestaurante2Controller implements Initializable {
 
             //public Mesa(int numMesa, Ubicacion ub, String mesero, String estado, int capacidad) {
             informacionMesa(0, 0, null, "DesOcupado", "DisenoPlano", new Ubicacion(ev.getX(), ev.getY()));
-            //Mesa mes = new Mesa(0, new Ubicacion(ev.getX(),ev.getY()), null, "DesOcupado",0);  
-            //MesaData.agregarMesaArchivos(mes);
-
-            /**
-             * Circle c = new Circle(30, Color.YELLOW); Label l = new
-             * Label("0"); StackPane st = new StackPane();
-             * st.getChildren().addAll(c, l); panelMesaDP.getChildren().add(st);
-             * st.setLayoutX(ev.getX()); st.setLayoutY(ev.getY());
-                 *
-             */
         });
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -252,8 +219,6 @@ public class MonitoreoRestaurante2Controller implements Initializable {
                 });
 
             }
-            //vbox.setOnMouseClicked((MouseEvent)->{   
-            //});
 
         } catch (IOException ex) {
             System.out.println("Paso algo");
@@ -284,28 +249,6 @@ public class MonitoreoRestaurante2Controller implements Initializable {
 
             InputStream inputImg = null;
             try {
-                // try {
-                /*  List<Plato> platos = PlatoData.leerPlatos();
-                
-                VBox vbox = new VBox();
-                URL u = App.class.getResource("platos.txt");
-                File file = new File(u.toURI());
-                if (!file.exists()) {
-                file.createNewFile();
-                }
-                BufferedWriter bf =new BufferedWriter (new FileWriter("platos.txt"));
-                //BufferedWriter bf = new BufferedWriter(new FileWriter(file.getAbsoluteFile(),true));
-                String nombrePlato = (String)cb.getValue();
-                String precio = t1.getText();
-                bf.write(nombrePlato+";"+precio+";"+nombrePlato+".png");
-                bf.newLine();
-                
-                System.out.println("Se agrego");
-                VBox vb2 = new VBox();
-                Label l3 = new Label(nombrePlato);
-                Label l4 = new Label("$ "+precio);
-                vb2.getChildren().addAll(l3,l4);               
-                panelGestionMenu.getChildren().add(vb2);*/
                 String nombrePlato = (String) cb.getValue();
                 String precio = t1.getText();
                 Plato plato = new Plato(nombrePlato, Integer.valueOf(precio), nombrePlato + ".jpeg");
@@ -324,11 +267,6 @@ public class MonitoreoRestaurante2Controller implements Initializable {
                 Label l4 = new Label("$ " + precio);
                 vb2.getChildren().addAll(imgv,l3, l4);
                 panelGestionMenu.getChildren().add(vb2);
-                /*   } catch (IOException ex) {
-                System.out.println("Paso algo");
-                }   catch (URISyntaxException ex) {
-                ex.printStackTrace();
-                }   */
             } catch (IOException ex) {
                 ex.printStackTrace();
             } finally {
@@ -359,15 +297,11 @@ public class MonitoreoRestaurante2Controller implements Initializable {
 
     @FXML
     private void filtrar(MouseEvent event) throws ParseException, ArchivosException {
-        //  List<Ventas> ventasFiltradas = new ArrayList<>();
-        // ArrayList<Ventas> arrayventas=new ArrayList<>();
+
 
         final ObservableList<Ventas> ventasFiltradas = FXCollections.observableArrayList();
-        /* new Ventas("01-12-2020","1","Margarita","1","Cliente1","20"),
-      new Ventas("02-12-2020","1","Margarita","1","Cliente1","20"),        
-      new Ventas("03-12-2020","1","Margarita","1","Cliente1","20"));*/
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        //DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         String fInicio = fechaInicio.getText();
         String fFin = fechaFin.getText();
         List<Ventas> ventas = new ArrayList<>();
@@ -384,9 +318,7 @@ public class MonitoreoRestaurante2Controller implements Initializable {
                 ventasFiltradas.add(v);
             }
 
-        }//ventasFiltradas.add(arrayventas);
-
-        //ventasTable.getColumns().addAll(fechaCol,mesaCol,meseroCol,cuentaCol,clienteCol,totalCol);
+        }
         fechaCol.setCellValueFactory(new PropertyValueFactory<Ventas, String>("fecha"));
         mesaCol.setCellValueFactory(new PropertyValueFactory<Ventas, String>("mesa"));
         meseroCol.setCellValueFactory(new PropertyValueFactory<Ventas, String>("mesero"));
@@ -444,9 +376,6 @@ public class MonitoreoRestaurante2Controller implements Initializable {
                     Thread ad1 = new Thread(a1);
                     ad1.start();
                     
-                    //aplicar hilo
-                    //iniciarElementosPanel(panelMesas, "Monitoreo");
-                    
                     
                     try {
                         MesaData.agregarMesaArchivos(me);
@@ -481,17 +410,6 @@ public class MonitoreoRestaurante2Controller implements Initializable {
 
         }
 
-        /**
-         * Label lb1 = new Label("Mesa # " + numero); Label lb2 = new
-         * Label("Capacidad de la mesa: " + capacidad); Label lb3 = new
-         * Label("Nombre del Mesero: " + mesero); Label lb4 = new Label("Estado:
-         * " + estado); vb.getChildren().add(lb1); vb.getChildren().add(lb2);
-         * vb.getChildren().add(lb3); vb.getChildren().add(lb4);
-         * vb.setAlignment(Pos.CENTER);
-         *
-         * Scene scene = new Scene(vb, 400, 80); st.setScene(scene); st.show();
-        *
-         */
     }
 
     public void iniciarElementosPanel(Pane p, String pestana) {
@@ -531,24 +449,16 @@ public class MonitoreoRestaurante2Controller implements Initializable {
                 } else if (pestana.equals("DisenoPlano")) {
                     st.setOnMouseClicked((MouseEvent ev) -> {
                         informacionMesa(m.getNumMesa(), m.getCapacidad(), m.getMesero(), m.getEstado(), pestana, new Ubicacion(m.getUbicacion().getX(), m.getUbicacion().getY()));
-                        //iniciarElementosPanel(panelMesas, "Monitoreo");
                         
                     });
                     
                     st.setOnMouseDragged((MouseEvent ex2)->{
                         st.setLayoutX(ex2.getX());
                         st.setLayoutY(ex2.getY());
-                        //iniciarElementosPanel(panelMesas, "Monitoreo");
                     });
 
                 }
 
-                /**
-                 * st.setOnMouseClicked((MouseEvent ev) -> {
-                 * //informacionMesa(m.getNumMesa(), m.getCapacidad(),
-                 * m.getMesero(), m.getEstado()); });
-                *
-                 */
             }
             numComensales.setText(String.valueOf("Total de Comensales: " + totalComensales));
         } catch (ArchivosException ex) {
