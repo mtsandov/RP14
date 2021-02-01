@@ -89,10 +89,6 @@ public class MonitoreoRestaurante2Controller implements Initializable {
     private TableView<Ventas> ventasTable;
     @FXML
     private FlowPane panelGestionMenu;
-    @FXML
-    private Button editarMenu;
-    @FXML
-    private Button eliminarPlato;
 
     /**
      * Initializes the controller class.
@@ -262,7 +258,7 @@ public class MonitoreoRestaurante2Controller implements Initializable {
         Label l2 = new Label("Ingrese el precio del plato: ");
         TextField t1 = new TextField();
         ComboBox cb = new ComboBox();
-        cb.getItems().addAll("Guatita", "Bollos", "Bandera", "Yapingacho");
+        cb.getItems().addAll("Guatita", "Bollos", "Bandera","Salchipapa", "Yapingacho","Encebollado","Bolon","Empanada","Agua","Jugo","Cafe","Cola");
         hb.getChildren().addAll(l1, cb);
         hb2.getChildren().addAll(l2, t1);
         Button bt = new Button("Agregar Plato");
@@ -498,6 +494,11 @@ public class MonitoreoRestaurante2Controller implements Initializable {
                 } else if (pestana.equals("DisenoPlano")) {
                     st.setOnMouseClicked((MouseEvent ev) -> {
                         informacionMesa(m.getNumMesa(), m.getCapacidad(), m.getMesero(), m.getEstado(), pestana, new Ubicacion(m.getUbicacion().getX(), m.getUbicacion().getY()));
+                    });
+                    
+                    st.setOnMouseDragged((MouseEvent ex2)->{
+                        st.setLayoutX(ex2.getX());
+                        st.setLayoutY(ex2.getY());
                     });
 
                 }
