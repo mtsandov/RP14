@@ -210,7 +210,7 @@ public class MonitoreoRestaurante2Controller implements Initializable {
                                     pla.setPrecio(Double.valueOf(tx1.getText()));
                                     
                                     try{
-                                        PlatoData.agregarPlatosArchivo(pla);
+                                        PlatoData.editarPlatosArchivo(pla);
                                     }catch(ArchivosException io1){
                                         System.out.println("Ocurrio un error al momento de escibir el cambio de plata de comida");
                                         System.out.println(io1);
