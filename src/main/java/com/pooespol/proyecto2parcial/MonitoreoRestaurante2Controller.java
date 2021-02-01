@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -403,6 +404,7 @@ public class MonitoreoRestaurante2Controller implements Initializable {
             ex.printStackTrace();
         }
     }
+    
 
     private void informacionMesa(int numero, int capacidad, String mesero, String estado, String pestana, Ubicacion u) {
 
@@ -433,14 +435,32 @@ public class MonitoreoRestaurante2Controller implements Initializable {
             cb.getItems().add(new Mesa(0, null, null, "DesOcupado", 0));
             Button bt = new Button("Cambiar");
             bt.setOnMouseClicked((MouseEvent ex) -> {
-                //modificar archivo
-                Mesa me = new Mesa(Integer.valueOf(t1.getText()), u, null, cb.getValue().toString(), Integer.valueOf(t2.getText()));
                 try {
+                    //modificar archivo
+                    Mesa me = new Mesa(Integer.valueOf(t1.getText()), u, null, cb.getValue().toString(), Integer.valueOf(t2.getText()));
                     MesaData.agregarMesaArchivos(me);
-                    iniciarElementosPanel(panelMesaDP, "DisenoPlano");
+                    
+                    actualilzarMonitoreo a1 = new actualilzarMonitoreo(me);
+                    Thread ad1 = new Thread(a1);
+                    ad1.start();
+                    
+                    //aplicar hilo
+                    //iniciarElementosPanel(panelMesas, "Monitoreo");
+                    
+                    
+                    try {
+                        MesaData.agregarMesaArchivos(me);
+                        iniciarElementosPanel(panelMesaDP, "DisenoPlano");
+                    } catch (ArchivosException ex1) {
+                        ex1.printStackTrace();
+                    }
+                    
+                    //informacionMesa(Integer.valueOf(t1.getText()), Integer.valueOf(t2.getText()), null, cb.getValue().toString(), "DisenoPlano");
+                    //cambiar
                 } catch (ArchivosException ex1) {
                     ex1.printStackTrace();
                 }
+
 
                 //informacionMesa(Integer.valueOf(t1.getText()), Integer.valueOf(t2.getText()), null, cb.getValue().toString(), "DisenoPlano");
                 //cambiar
@@ -504,17 +524,21 @@ public class MonitoreoRestaurante2Controller implements Initializable {
                 st.setLayoutY(m.getUbicacion().getY());
 
                 if (pestana.equals("Monitoreo")) {
+                    
                     st.setOnMouseClicked((MouseEvent ev) -> {
                         informacionMesa(m.getNumMesa(), m.getCapacidad(), m.getMesero(), m.getEstado(), pestana, new Ubicacion(m.getUbicacion().getX(), m.getUbicacion().getY()));
                     });
                 } else if (pestana.equals("DisenoPlano")) {
                     st.setOnMouseClicked((MouseEvent ev) -> {
                         informacionMesa(m.getNumMesa(), m.getCapacidad(), m.getMesero(), m.getEstado(), pestana, new Ubicacion(m.getUbicacion().getX(), m.getUbicacion().getY()));
+                        //iniciarElementosPanel(panelMesas, "Monitoreo");
+                        
                     });
                     
                     st.setOnMouseDragged((MouseEvent ex2)->{
                         st.setLayoutX(ex2.getX());
                         st.setLayoutY(ex2.getY());
+                        //iniciarElementosPanel(panelMesas, "Monitoreo");
                     });
 
                 }
@@ -532,5 +556,28 @@ public class MonitoreoRestaurante2Controller implements Initializable {
         }
 
     }
+    
+    
+    class actualilzarMonitoreo implements Runnable{
+        
+        Mesa m;
+        
+        public actualilzarMonitoreo(Mesa m){
+            this.m = m;
+        }
+        public void run(){
+                Platform.runLater(()->{
+                    try{
+                    MesaData.agregarMesaArchivos(m);
+                    Thread.sleep(8000);
+                    iniciarElementosPanel(panelMesas, "Monitoreo");
+                    }catch (ArchivosException ex) {
+                        ex.printStackTrace();
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                });      
+        }
+} 
 
 }
