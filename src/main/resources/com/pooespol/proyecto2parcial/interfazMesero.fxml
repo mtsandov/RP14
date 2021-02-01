@@ -1,117 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.proyecto2parcial.InterfazMeseroController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.proyecto2parcial.InterfazMeseroController">
    <children>
-      <Label alignment="CENTER" prefHeight="54.0" prefWidth="710.0" text="Mesero">
+      <Label alignment="CENTER" prefHeight="86.0" prefWidth="815.0" text="Mesero">
          <font>
             <Font name="System Bold" size="33.0" />
          </font>
       </Label>
-      <AnchorPane prefHeight="348.0" prefWidth="600.0">
+      <Pane fx:id="panelMesasMesero" prefHeight="523.0" prefWidth="700.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#848484" height="354.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0" />
-            <Ellipse fill="#e4ff1e" layoutX="526.0" layoutY="65.0" onMouseClicked="#irPedido" radiusX="35.0" radiusY="22.0" stroke="#e4ff1e" strokeType="INSIDE" />
-            <Circle fill="#e4ff1e" layoutX="47.0" layoutY="47.0" onMouseClicked="#irPedido" radius="25.0" stroke="#e4ff1e" strokeType="INSIDE" />
-            <Circle fill="#e4ff1e" layoutX="190.0" layoutY="47.0" onMouseClicked="#irPedido" radius="25.0" stroke="#e4ff1e" strokeType="INSIDE" />
-            <Circle fill="#e4ff1e" layoutX="65.0" layoutY="136.0" onMouseClicked="#irPedido" radius="35.0" stroke="#e4ff1e" strokeType="INSIDE" />
-            <Circle fill="#e4ff1e" layoutX="65.0" layoutY="261.0" onMouseClicked="#irPedido" radius="35.0" stroke="#e4ff1e" strokeType="INSIDE" />
-            <Circle fill="#e4ff1e" layoutX="117.0" layoutY="47.0" onMouseClicked="#irPedido" radius="25.0" stroke="#e4ff1e" strokeType="INSIDE" />
-            <Circle fill="#e4ff1e" layoutX="373.0" layoutY="118.0" onMouseClicked="#irPedido" radius="45.0" stroke="#e4ff1e" strokeType="INSIDE" />
-            <Circle fill="#e4ff1e" layoutX="284.0" layoutY="194.0" onMouseClicked="#irPedido" radius="45.0" stroke="#e4ff1e" strokeType="INSIDE" />
-            <Circle fill="#e4ff1e" layoutX="259.0" layoutY="47.0" onMouseClicked="#irPedido" radius="25.0" stroke="#e4ff1e" strokeType="INSIDE" />
-            <Circle fill="#e4ff1e" layoutX="168.0" layoutY="136.0" onMouseClicked="#irPedido" radius="35.0" stroke="#e4ff1e" strokeType="INSIDE" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="298.0" layoutX="570.0" layoutY="22.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
-            <Circle fill="#e4ff1e" layoutX="168.0" layoutY="261.0" onMouseClicked="#irPedido" radius="35.0" stroke="#e4ff1e" strokeType="INSIDE" />
-            <Circle fill="#e4ff1e" layoutX="384.0" layoutY="261.0" onMouseClicked="#irPedido" radius="45.0" stroke="#e4ff1e" strokeType="INSIDE" />
-            <Label layoutX="40.0" layoutY="29.0" onMouseClicked="#irPedido" text="1">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="398.0" layoutX="642.0" layoutY="47.0" stroke="BLACK" strokeType="INSIDE" width="18.0" />
+            <Label alignment="CENTER" layoutX="635.0" layoutY="232.0" prefHeight="17.0" prefWidth="76.0" rotate="-90.0" text="COCINA">
                <font>
-                  <Font size="25.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="110.0" layoutY="29.0" onMouseClicked="#irPedido" text="2">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="183.0" layoutY="29.0" onMouseClicked="#irPedido" text="3">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <Label layoutX="359.0" layoutY="100.0" onMouseClicked="#irPedido" text="10">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <Label layoutX="252.0" layoutY="29.0" onMouseClicked="#irPedido" text="4">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <Label layoutX="58.0" layoutY="118.0" onMouseClicked="#irPedido" text="5">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <Label layoutX="161.0" layoutY="118.0" onMouseClicked="#irPedido" text="6">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <Label layoutX="370.0" layoutY="243.0" onMouseClicked="#irPedido" text="11">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <Label layoutX="161.0" layoutY="243.0" onMouseClicked="#irPedido" text="8">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <Label layoutX="512.0" layoutY="47.0" onMouseClicked="#irPedido" text="12">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <Label layoutX="58.0" layoutY="240.0" onMouseClicked="#irPedido" text="7">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <Label layoutX="277.0" layoutY="180.0" onMouseClicked="#irPedido" text="9">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <Ellipse fill="#e4ff1e" layoutX="526.0" layoutY="279.0" onMouseClicked="#irPedido" radiusX="35.0" radiusY="22.0" stroke="#e4ff1e" strokeType="INSIDE" />
-            <Ellipse fill="#e4ff1e" layoutX="526.0" layoutY="123.0" onMouseClicked="#irPedido" radiusX="35.0" radiusY="22.0" stroke="#e4ff1e" strokeType="INSIDE" />
-            <Ellipse fill="#e4ff1e" layoutX="526.0" layoutY="216.0" onMouseClicked="#irPedido" radiusX="35.0" radiusY="22.0" stroke="#e4ff1e" strokeType="INSIDE" />
-            <Label layoutX="512.0" layoutY="105.0" onMouseClicked="#irPedido" text="13">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <Label layoutX="512.0" layoutY="198.0" onMouseClicked="#irPedido" text="14">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <Label layoutX="512.0" layoutY="261.0" onMouseClicked="#irPedido" text="15">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <Button layoutY="325.0" mnemonicParsing="false" onMouseClicked="#irLogin" prefHeight="28.0" prefWidth="700.0" text="Cerrar Sesion" />
          </children>
-      </AnchorPane>
+      </Pane>
+      <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="187.0" text="Button">
+         <VBox.margin>
+            <Insets bottom="20.0" left="300.0" />
+         </VBox.margin>
+      </Button>
    </children>
 </VBox>

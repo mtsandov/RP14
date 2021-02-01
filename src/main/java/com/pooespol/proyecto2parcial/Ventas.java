@@ -8,11 +8,16 @@ package com.pooespol.proyecto2parcial;
 import com.pooespol.proyecto2parcial.App;
 import com.pooespol.proyecto2parcial.data.ArchivosException;
 import com.pooespol.proyecto2parcial.data.MesaData;
+import com.pooespol.proyecto2parcial.modelo.Mesa;
 import com.pooespol.proyecto2parcial.usuarios.Mesero;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.beans.property.SimpleStringProperty;
@@ -63,7 +68,7 @@ public class Ventas {
     }
     
     public static List<Ventas> leerVentas() throws ArchivosException {
-
+        System.out.println("leyendo cuentas");
         String ruta = "ventas.txt";
         List<Ventas> ventas = new ArrayList<>();
         try (InputStream input = App.class.getResource(ruta).openStream();
@@ -83,7 +88,7 @@ public class Ventas {
                 //Mesa mesa = MesaData.buscarMesaPorNumero(numMesa);
                 Ventas venta= new Ventas(fecha,numMesa,nombreMesero,numCuenta,cliente,monto);
                 ventas.add(venta);
-            }
+            }System.out.println("Fuera del for leyendp  ventas");
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
@@ -112,5 +117,36 @@ public class Ventas {
             ex.printStackTrace();
             throw new ArchivosException(ruta, ex.getMessage());
         }return facturado;
+    }
+    public static void agregarVenta(Ventas venta) throws ArchivosException{
+        String ruta = "ventas.txt";
+        List<Ventas> ventas = Ventas.leerVentas();
+
+        //try(InputStream input = App.class.getResource(ruta).openStream();
+        //BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out))) {
+        try{
+        URL u = App.class.getResource(ruta);
+        File file = new File(u.toURI());
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
+
+            String linea;
+            for (Ventas v : ventas) {
+                linea = v.getFecha()+";"+v.getMesa()+";"+v.getMesero()+";"+v.getCuenta()+";"+v.getCliente()+";"+v.getVenta();
+                bw.write(linea);
+                bw.newLine();
+            }
+
+            linea =  venta.getFecha()+";"+venta.getMesa()+";"+venta.getMesero()+";"+venta.getCuenta()+";"+venta.getCliente()+";"+venta.getVenta();
+            bw.write(linea);
+            bw.newLine();
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
+            throw new ArchivosException(ruta, ex.getMessage());
+            }
+        }catch(Exception ex){
+            System.out.println(ex);
+        }  
     }
  }

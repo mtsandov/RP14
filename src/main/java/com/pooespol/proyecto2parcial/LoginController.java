@@ -13,7 +13,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -35,7 +37,10 @@ public class LoginController implements Initializable {
     private Label txtMostrar;
     @FXML
     private Label irRegistro;
-
+     public String correo = txtCorreo.getText();
+    
+   //public static String nombreUsuario = txtCorreo.getText();
+    
     public LoginController() {
         usuarios= new ArrayList<>();
         Administrador a1 = new Administrador("alfrcall@espol.edu.ec","12345");
@@ -69,6 +74,7 @@ public class LoginController implements Initializable {
                     if(u instanceof Administrador){
                         try{
                             b = true;
+                            
                             App.setRoot("interfazAdministrador");
                             break;
                         }catch(IOException ex){
@@ -78,6 +84,10 @@ public class LoginController implements Initializable {
                     }else if(u instanceof Mesero){
                         try{
                             b = true;
+                            FXMLLoader fxmlLoader= new FXMLLoader(App.class.getResource("interfazMesero.fxml"));
+                            Parent root=fxmlLoader.load();
+                            InterfazMeseroController it = fxmlLoader.<InterfazMeseroController>getController();
+                            it.setCorreo(txtCorreo.getText());
                             App.setRoot("interfazMesero");
                             break;
                         }catch(IOException ex){
@@ -109,7 +119,17 @@ public class LoginController implements Initializable {
     public ArrayList<Usuario> getUsuarios() {
         return usuarios;
     }
-    
+    public String obtenerUsuarioIngresado(){
+        System.out.println("Hola");
+        String correo = txtCorreo.getText();
+        String nombreUsuario=null;
+        for(Usuario user : usuarios){
+            if(user.getCorreo().equals(correo)){
+               nombreUsuario=user.getCorreo();
+            }
+        }return nombreUsuario;
+        
+    }
     
     
 

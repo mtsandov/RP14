@@ -17,6 +17,10 @@ public class Mesero extends Usuario{
         super(correo, contrasena,"Mesero");
         this.nombre = nombre;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
     
     
 }

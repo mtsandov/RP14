@@ -96,6 +96,7 @@ public class MonitoreoRestaurante2Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        System.out.println("Aqui");
         //Monitoreo
         /**
         try{
@@ -327,7 +328,7 @@ public class MonitoreoRestaurante2Controller implements Initializable {
         }
     }
 
-    private void informacionMesa(int numero, int capacidad, String mesero, String estado, String pestana, Ubicacion u) {
+    public void informacionMesa(int numero, int capacidad, String mesero, String estado, String pestana, Ubicacion u) {
 
         Stage st = new Stage();
         VBox vb = new VBox(0.5);

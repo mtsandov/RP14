@@ -4,8 +4,8 @@ Angel;3;170:10;Ocupado;4
 Nadie;4;250:10;DesOcupado;2
 Nadie;5;57:141;DesOcupado;6
 Nadie;6;109:126;DesOcupado;3
-Victor;7;1:123;Ocupado;10
+Alex;7;1:123;Ocupado;10
 Nadie;8;112:274;DesOcupado;5
-Angel;9;265:118;Ocupado;12
-Angel;10;265:291;Ocupado;6
-Victor;11;405:192;Ocupado;6
+Joel;9;265:118;Ocupado;12
+Carlos;10;265:291;Ocupado;6
+Margarita;11;405:192;Ocupado;6
