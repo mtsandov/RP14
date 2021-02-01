@@ -5,12 +5,21 @@
  */
 package com.pooespol.proyecto2parcial;
 
+import com.pooespol.proyecto2parcial.data.ArchivosException;
+import com.pooespol.proyecto2parcial.data.MesaData;
+import com.pooespol.proyecto2parcial.modelo.Mesa;
 import com.pooespol.proyecto2parcial.usuarios.Administrador;
 import com.pooespol.proyecto2parcial.usuarios.Mesero;
 import com.pooespol.proyecto2parcial.usuarios.Usuario;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,7 +46,7 @@ public class LoginController implements Initializable {
     private Label txtMostrar;
     @FXML
     private Label irRegistro;
-     public String correo = txtCorreo.getText();
+     //public String correo = txtCorreo.getText();
     
    //public static String nombreUsuario = txtCorreo.getText();
     
@@ -52,6 +61,7 @@ public class LoginController implements Initializable {
         
         for(Usuario u: usuarios){
             System.out.println(u.getCorreo()+ ";"+ u.getContrasena() + ";"+ u.toString());
+            
         }
     }
     
@@ -67,6 +77,8 @@ public class LoginController implements Initializable {
     
     @FXML
     private void irInterfaz(MouseEvent event) {
+        registrarUsuariosIngresados(obtenerUsuarioIngresado());
+        InterfazMeseroController.correo=txtCorreo.getText();
         ArrayList<Usuario> us = usuarios;
         boolean b = false;
         for(Usuario u: us){
@@ -119,16 +131,82 @@ public class LoginController implements Initializable {
     public ArrayList<Usuario> getUsuarios() {
         return usuarios;
     }
-    public String obtenerUsuarioIngresado(){
-        System.out.println("Hola");
+    public Usuario obtenerUsuarioIngresado(){
+        System.out.println("obteniendo usuario");
         String correo = txtCorreo.getText();
-        String nombreUsuario=null;
+        Usuario usuario =null;
         for(Usuario user : usuarios){
             if(user.getCorreo().equals(correo)){
-               nombreUsuario=user.getCorreo();
+                if(user.toString().equals("Mesero")){
+                  Mesero m = (Mesero)user;
+                  usuario=new Usuario(m.getCorreo(),m.getContrasena(),"Mesero");
+                    System.out.println("eentre?");
+                  break;
+                }
+                else{
+                    Administrador ad = (Administrador) user;
+                    usuario = new Usuario(ad.getCorreo(),ad.getContrasena(),"Administrador");
+                    System.out.println("entre?");
+                    break;
+                }
             }
-        }return nombreUsuario;
-        
+        }
+        return usuario;
+    }
+    
+    public void registrarUsuariosIngresados(Usuario ingresado){
+        String ruta = "ingresados.txt";
+      //  List<Mesa> mesas = MesaData.cargarMesaArchivos("UbicacionMesas.txt");
+
+        //try(InputStream input = App.class.getResource(ruta).openStream();
+        //BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out))) {
+        try{
+        URL u = App.class.getResource(ruta);
+        File file = new File(u.toURI());
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
+
+            String linea;
+            String linea2;
+         /*   for (Usuario user : usuarios) {
+                if(user instanceof Mesero){
+                    linea=user.getCorreo()+";"+"Mesero";
+                    bw.write(linea);
+                    bw.newLine();
+                } else{
+                    linea=user.getCorreo()+";"+"Administrador";
+                }
+                
+            }*/
+            BufferedReader bf = new BufferedReader(new FileReader(file));
+            //String linea2;
+            do{
+                ingresado= obtenerUsuarioIngresado();
+                if(ingresado.toString().equals("Mesero")){
+                    System.out.println(ingresado);
+                 linea=ingresado.getCorreo()+";"+"Mesero";
+                    System.out.println("Aqui mesero");
+                 bw.write(linea);
+                 bw.newLine();
+                    System.out.println("Se escribio");
+                }
+                else if (ingresado.toString().equals("Administrador")) {
+                    linea=ingresado.getCorreo()+";"+"Administrador";
+                    System.out.println("Aqui admin");
+                    bw.write(linea);
+                    //bw.newLine();
+                }
+                
+            }while((linea2=bf.readLine())!=null);
+
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
+            throw new ArchivosException(ruta, ex.getMessage());
+            }
+        }catch(Exception ex){
+            System.out.println(ex);
+        }
     }
     
     

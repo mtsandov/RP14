@@ -12,10 +12,17 @@ import com.pooespol.proyecto2parcial.modelo.Ubicacion;
 import com.pooespol.proyecto2parcial.usuarios.Mesero;
 import com.pooespol.proyecto2parcial.usuarios.Usuario;
 import com.pooespol.proyecto2parcial.data.UsuarioData;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -45,7 +52,7 @@ import javafx.stage.Stage;
 public class InterfazMeseroController implements Initializable {
     @FXML
     private Pane panelMesasMesero;
-    private String correo;
+    public static String correo;
     //private LoginController lg;
 
     /**
@@ -57,36 +64,54 @@ public class InterfazMeseroController implements Initializable {
     public void setCorreo(String correo) {
         this.correo = correo;
     }  
-    
-    /*loader.setLocation(getClass().getResource("FXMLDocument.fxml"));
-loader.load();
-SegundoController document = loader.getController();
-document.setEmployee(new Empleado(5,"Hola"));
-Parent p = loader.getRoot();
-Stage s = new Stage();
-s.setScene(new Scene(p));
-s.show();*/
-    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("Wenas");
        // String correo = LoginController.obtenerUsuarioIngresado();
       // setCorreo(LoginController.txtCorreo.getText());
+   /*   String ruta = "ingresados.txt";
+      //  List<Mesa> mesas = MesaData.cargarMesaArchivos("UbicacionMesas.txt");
+
+        //try(InputStream input = App.class.getResource(ruta).openStream();
+        //BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out))) {
+        try{
+        URL u = App.class.getResource(ruta);
+        File file = new File(u.toURI());
+        try (BufferedReader bf = new BufferedReader(new FileReader(file))) {
+            String linea;
+            while((linea=bf.readLine())!=null){
+                correo=linea.split(";")[0];
+            }
+        }catch(Exception ex){
+            System.out.println(ex);
+        }
+        } catch (URISyntaxException ex) {
+            ex.printStackTrace();
+        }*/
+        try {
+            List<Mesa> mesas=MesaData.cargarMesaArchivos("UbicacionMesas.txt");
+            for(Mesa m:mesas){
+                System.out.println(m);
+            }
+        } catch (ArchivosException ex) {
+            ex.printStackTrace();
+        }
+      
+      
         System.out.println(correo);
-        System.out.println("Hola");
         try {
             List<Usuario> usuarios = UsuarioData.leerUsuarios();
             for(Usuario user : usuarios){
                 if(user.getCorreo().equals(correo) && (user instanceof Mesero)){
                     Mesero mesero=(Mesero)user;
                     iniciarElementosPanelMesero(mesero.getNombre());
-                    System.out.println("Aqui");
                 }   
             }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+        
     }    
 
     private void irPedido(MouseEvent event) {
@@ -97,6 +122,7 @@ s.show();*/
         }
     }
 
+    @FXML
     private void irLogin(MouseEvent event) {
         try {
             App.setRoot("Login");
@@ -110,55 +136,55 @@ s.show();*/
         try{
             List<Mesa> mesas = MesaData.cargarMesaArchivos("UbicacionMesas.txt");
             System.out.println("inciando");
-            Circle c1;
+            Circle c1=null;
             for(Mesa m: mesas){
-                System.out.println("iterando");
                 Circle  c = new Circle(30, Color.BLUE);
+                if(m.getCapacidad()<=4){
+                c = new Circle(25, Color.BLUE);
+                }else if(m.getCapacidad()>4 && m.getCapacidad()<8){
+                c = new Circle(35, Color.BLUE);
+                }else if(m.getCapacidad()>=8){
+                c = new Circle(40, Color.BLUE);
+                }
                 if(m.getEstado().equals("Ocupado")){
-                    System.out.println("Dentro del if");
-                     c = new Circle(30, Color.RED);
+                     //c = new Circle(30, Color.RED);
+                     c.setFill(Color.RED);
                      c1=c;
-                     System.out.println("Se creo el rojo");
-                     System.out.println(m.getMesero());
-                     System.out.println(nombreMesero);
                      if(m.getMesero().equals(nombreMesero)){
                      c.setFill(Color.GREEN);
                      c1=c;
-                         System.out.println("Se creo el circulo verde");
                      }
                 
                 }else if(m.getEstado().equals("DesOcupado")){
-                    System.out.println("se creo el amarillo");
-                    c = new Circle(30, Color.YELLOW);
+                   // c = new Circle(30, Color.YELLOW);
+                   c.setFill(Color.YELLOW);
                     c1=c;
                 
                 }
-                System.out.println("Fuera del for");
                 Label l = new Label(String.valueOf(m.getNumMesa()));
-                System.out.println("Cree el label");
                 StackPane st = new StackPane();
                 st.getChildren().addAll(c, l);
-                System.out.println("Cree el st");
-                System.out.println("Antes del pane");
+                
                panelMesasMesero.getChildren().add(st);
-              System.out.println("Cree el pane");
+              
                 st.setLayoutX(m.getUbicacion().getX());
                 st.setLayoutY(m.getUbicacion().getY());
  
-                System.out.println("Antes del evento");
+                
                 st.setOnMouseClicked((MouseEvent)->{
-                    System.out.println("En el evento");
-                    System.out.println(m.getEstado());
                     if(m.getEstado().equals("DesOcupado")){
                         try {
                             System.out.println("en el desocupado");
                             AbrirCuenta(nombreMesero,String.valueOf(m.getNumMesa()));
+                            m.setEstado("Ocupado");
+                            System.out.println(m);
                         } catch (ArchivosException ex) {
                             ex.printStackTrace();
                         }
                     }
                 });
-
+                
+                
                 }
                 
                 /**
@@ -176,12 +202,11 @@ s.show();*/
     }
         
   public void AbrirCuenta(final String nombreMesero,final String numMesa) throws ArchivosException{
-      System.out.println("En la cuenta");
     List<Ventas> ventas = Ventas.leerVentas();
     String numCuenta=null;
     for(Ventas v: ventas){
         numCuenta=v.getCuenta();
-    }System.out.println("se creo la cuenta");
+    }
     final String cuenta=String.valueOf(Integer.valueOf(numCuenta)+1);
     Stage st = new Stage();
     VBox vb = new VBox();
@@ -201,27 +226,18 @@ s.show();*/
     final String fechaActual = fechaHoy.format(new Date());
       
   //  Ventas v = new Ventas(String.valueOf(fechaActual),numMesa,nombreMesero,numCuenta,nombreCliente,"0.0");
-      System.out.println("se creo la venta");
+      
     bt.setOnMouseClicked((MouseEvent ev)->{
-        System.out.println("Dentro del evento");
         try {
            String nombreCliente=t.getText();
           Ventas v = new Ventas(String.valueOf(fechaActual),numMesa,nombreMesero,cuenta,nombreCliente,"0.0");
-            System.out.println("Dentro del evento");
             Ventas.agregarVenta(v);
             System.out.println("Venta agregada");
-            Circle c = new Circle();
             
         } catch (ArchivosException ex) {
             ex.printStackTrace();
         }   
     });
-        System.out.println("Crenaod ventana");
-  //  hb.getChildren().addAll(l,t);
-    //vb.getChildren().addAll(hb,bt);
-
-
-     // System.out.println(nombreCliente);
-        System.out.println("Creada la escena");
+    
 }
 }

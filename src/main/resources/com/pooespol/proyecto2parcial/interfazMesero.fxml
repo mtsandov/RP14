@@ -25,7 +25,7 @@
             </Label>
          </children>
       </Pane>
-      <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="187.0" text="Button">
+      <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#irLogin" prefHeight="42.0" prefWidth="187.0" text="Salir">
          <VBox.margin>
             <Insets bottom="20.0" left="300.0" />
          </VBox.margin>

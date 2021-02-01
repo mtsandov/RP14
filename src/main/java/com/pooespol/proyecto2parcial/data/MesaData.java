@@ -99,7 +99,6 @@ public class MesaData {
             String linea;
             Mesa mesa = null;
             while ((linea = bf.readLine()) != null) {
-                System.out.println(linea);
                 String[] lista = linea.split(";");
                 if(lista[1].equals(numero)){
                     double X = Double.valueOf(lista[2].split(":")[0]);

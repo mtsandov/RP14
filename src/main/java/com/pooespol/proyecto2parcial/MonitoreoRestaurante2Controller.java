@@ -469,11 +469,11 @@ public class MonitoreoRestaurante2Controller implements Initializable {
             for (Mesa m : mesas) {
                 Circle  c = new Circle(30, Color.BLUE);
                 if(m.getCapacidad()<=4){
-                c = new Circle(30, Color.BLUE);
+                c = new Circle(25, Color.BLUE);
                 }else if(m.getCapacidad()>4 && m.getCapacidad()<8){
-                c = new Circle(60, Color.BLUE);
+                c = new Circle(35, Color.BLUE);
                 }else if(m.getCapacidad()>=8){
-                c = new Circle(120, Color.BLUE);
+                c = new Circle(40, Color.BLUE);
                 }
                 if(m.getEstado().equals("Ocupado")){
                      //c = new Circle(30, Color.RED);

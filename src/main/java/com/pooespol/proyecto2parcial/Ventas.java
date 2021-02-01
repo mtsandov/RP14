@@ -76,7 +76,6 @@ public class Ventas {
                         new InputStreamReader(input, "UTF-8"))) {
             String linea;
             while ((linea = bf.readLine()) != null) {
-                System.out.println(linea);
                 String[] lista = linea.split(";");
                 String fecha = lista[0];
                 String nombreMesero = lista[2];
@@ -88,7 +87,7 @@ public class Ventas {
                 //Mesa mesa = MesaData.buscarMesaPorNumero(numMesa);
                 Ventas venta= new Ventas(fecha,numMesa,nombreMesero,numCuenta,cliente,monto);
                 ventas.add(venta);
-            }System.out.println("Fuera del for leyendp  ventas");
+            }
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
@@ -105,7 +104,6 @@ public class Ventas {
                         new InputStreamReader(input, "UTF-8"))) {
             String linea;
             while ((linea = bf.readLine()) != null) {
-                System.out.println(linea);
                 String[] lista = linea.split(";");
                 for(String datos: lista){
                     double monto = Double.valueOf(lista[5]);

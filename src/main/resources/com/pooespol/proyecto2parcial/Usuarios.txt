@@ -1,4 +1,4 @@
 Administrador;alfrcall@espol.edu.ec;12345
 Administrador;usuario1;01234
-Mesero;usuario2;56789;Angel
-Mesero;usuario3;0000;Victor
+Mesero;usuario2;56789;Victor
+Mesero;usuario3;0000;Angel
