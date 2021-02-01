@@ -113,7 +113,32 @@ public class PlatoData {
         }
     }
     
+    public static void eliminarPlatosArchivo(String nombre) throws IOException, ArchivosException{
+        String ruta = "platos.txt";
+        List<Plato> platos = PlatoData.leerPlatos();
+        try{
+            URL u = App.class.getResource(ruta);
+            File file = new File(u.toURI());
+            try(BufferedWriter bw = new BufferedWriter(new FileWriter(file))){
+                String linea;
+                for (Plato pl: platos){
+                    if (!pl.getNombre().equals(nombre)){
+                       linea = pl.getNombre()+";"+pl.getPrecio()+";"+pl.getImagen();
+                       bw.write(linea);
+                       bw.newLine();
+                }
+                }
+            }catch(IOException ex) {
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
+            throw new ArchivosException(ruta, ex.getMessage());
+            }
+        }catch(Exception ex){
+            System.out.println(ex);
+        
+        }        
+    }    
+
     
-    
-    
+        
 }

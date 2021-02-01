@@ -8,6 +8,8 @@ package com.pooespol.proyecto2parcial;
 import com.pooespol.proyecto2parcial.data.ArchivosException;
 import com.pooespol.proyecto2parcial.data.MesaData;
 import com.pooespol.proyecto2parcial.data.PlatoData;
+import static com.pooespol.proyecto2parcial.data.PlatoData.editarPlatosArchivo;
+import static com.pooespol.proyecto2parcial.data.PlatoData.eliminarPlatosArchivo;
 import com.pooespol.proyecto2parcial.modelo.Mesa;
 import com.pooespol.proyecto2parcial.modelo.Plato;
 import com.pooespol.proyecto2parcial.modelo.Ubicacion;
@@ -196,6 +198,15 @@ public class MonitoreoRestaurante2Controller implements Initializable {
                     
                     bt2.setOnMouseClicked((MouseEvent e2) ->{
                         panelGestionMenu.getChildren().remove(vbox);
+                        try {
+                            eliminarPlatosArchivo(p.getNombre());
+                         
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        } catch (ArchivosException ex) {
+                            ex.printStackTrace();
+                        }
+            
                     });
                     
                     
