@@ -411,12 +411,21 @@ public class MonitoreoRestaurante2Controller implements Initializable {
             int totalComensales = 0;
             for(Mesa m: mesas){
                 Circle  c = new Circle(30, Color.BLUE);
+                if(m.getCapacidad()<=4){
+                c = new Circle(30, Color.BLUE);
+                }else if(m.getCapacidad()>4 && m.getCapacidad()<=8){
+                c = new Circle(60, Color.BLUE);
+                }else if(m.getCapacidad()>8 && m.getCapacidad()<=12){
+                c = new Circle(90, Color.BLUE);
+                }
                 if(m.getEstado().equals("Ocupado")){
-                     c = new Circle(30, Color.RED);
+                     //c = new Circle(30, Color.RED);
+                     c.setFill(Color.RED);
                      int capacidad = m.getCapacidad();
                      totalComensales+=capacidad;
                 }else if(m.getEstado().equals("DesOcupado")){
-                    c = new Circle(30, Color.YELLOW);
+                    //c = new Circle(30, Color.YELLOW);
+                    c.setFill(Color.YELLOW);
                 }
                 Label l = new Label(String.valueOf(m.getNumMesa()));
                 StackPane st = new StackPane();

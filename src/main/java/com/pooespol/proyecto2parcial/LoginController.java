@@ -84,10 +84,10 @@ public class LoginController implements Initializable {
                     }else if(u instanceof Mesero){
                         try{
                             b = true;
-                            FXMLLoader fxmlLoader= new FXMLLoader(App.class.getResource("interfazMesero.fxml"));
-                            Parent root=fxmlLoader.load();
-                            InterfazMeseroController it = fxmlLoader.<InterfazMeseroController>getController();
-                            it.setCorreo(txtCorreo.getText());
+                            //FXMLLoader fxmlLoader= new FXMLLoader(App.class.getResource("interfazMesero.fxml"));
+                            //Parent root=fxmlLoader.load();
+                            //InterfazMeseroController it = fxmlLoader.<InterfazMeseroController>getController();
+                            //it.setCorreo(txtCorreo.getText());
                             App.setRoot("interfazMesero");
                             break;
                         }catch(IOException ex){
