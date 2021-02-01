@@ -194,6 +194,11 @@ public class MonitoreoRestaurante2Controller implements Initializable {
                     st.setScene(sce);
                     st.show();
                     
+                    bt2.setOnMouseClicked((MouseEvent e2) ->{
+                        panelGestionMenu.getChildren().remove(vbox);
+                    });
+                    
+                    
                     bt1.setOnMouseClicked((MouseEvent e)->{
                         VBox vb1 = new VBox();
                         Label lab1 = new Label("Ingrese Costo");
